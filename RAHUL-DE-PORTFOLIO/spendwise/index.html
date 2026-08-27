@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="SpendWise student expense tracker">
+	<title>SpendWise | Student Expense Tracker</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="app-shell">
+		<header class="topbar">
+			<a class="logo" href="index.html" aria-label="SpendWise home"><span class="logo-mark">S</span><span>Spend<span>Wise</span></span></a>
+			<div class="header-actions"><span class="date-label" id="todayLabel">TODAY</span><button class="icon-button" id="themeToggle" type="button" aria-label="Switch to light theme" title="Toggle theme">◐</button></div>
+		</header>
+		<main>
+			<section class="welcome-row" aria-labelledby="pageTitle"><div><p class="eyebrow"><span></span> Student expense tracker</p><h1 id="pageTitle">Know where<br>it <em>goes.</em></h1><p class="intro">A clear, calm view of your spending, built for everyday student life.</p></div><div class="date-stamp"><span id="dayNumber">25</span><small id="monthName">AUG<br>2026</small></div></section>
+
+			<section class="stats-grid" aria-label="Financial summary"><article class="card balance-card"><p class="label">TOTAL BALANCE</p><h2 id="totalBalance">₹0.00</h2><p class="muted">Your current balance</p></article><article class="card income-card"><p class="label">TOTAL INCOME</p><h2 id="totalIncome">₹0.00</h2><p class="muted">Money received</p></article><article class="card expense-card"><p class="label">TOTAL EXPENSES</p><h2 id="totalExpenses">₹0.00</h2><p class="muted">Money spent</p></article><article class="card count-card"><p class="label">TRANSACTIONS</p><h2 id="transactionCount">0</h2><p class="muted">Recorded so far</p></article></section>
+
+			<section class="main-grid">
+				<article class="card add-card" aria-labelledby="addTitle"><div class="section-heading"><div><p class="label">NEW ENTRY</p><h2 id="addTitle">Add transaction</h2></div><span class="section-number">01</span></div><form id="transactionForm" novalidate><div class="form-row"><div class="field"><label for="titleInput">Title</label><input id="titleInput" type="text" maxlength="80" placeholder="e.g. Lunch at college" required></div><div class="field"><label for="amountInput">Amount</label><div class="amount-input"><span>₹</span><input id="amountInput" type="number" min="0.01" step="0.01" placeholder="0.00" inputmode="decimal" required></div></div></div><div class="form-row"><div class="field"><label for="typeInput">Type</label><select id="typeInput"><option value="expense">Expense</option><option value="income">Income</option></select></div><div class="field"><label for="categoryInput">Category</label><select id="categoryInput" required><option value="">Choose category</option><option>Food</option><option>Transport</option><option>Education</option><option>Shopping</option><option>Entertainment</option><option>Other</option></select></div></div><div class="field"><label for="dateInput">Date</label><input id="dateInput" type="date" required></div><p class="form-error" id="formError" role="alert"></p><button class="primary-button" type="submit">Add transaction <span>+</span></button></form></article>
+				<article class="card category-card" aria-labelledby="categoryTitle"><div class="section-heading"><div><p class="label">SPENDING BREAKDOWN</p><h2 id="categoryTitle">Where it goes</h2></div><span class="section-number">02</span></div><div class="category-chart" id="categoryChart" aria-live="polite"></div><p class="empty-chart hidden" id="chartEmpty">Category insights will appear after your first expense.</p></article>
+			</section>
+
+			<section class="history-card card" aria-labelledby="historyTitle"><div class="section-heading history-heading"><div><p class="label">ACTIVITY</p><h2 id="historyTitle">Transaction history</h2></div><div class="filter-group" role="group" aria-label="Filter transactions"><button class="filter-button active" type="button" data-filter="all">All</button><button class="filter-button" type="button" data-filter="income">Income</button><button class="filter-button" type="button" data-filter="expense">Expense</button></div></div><div class="transaction-table" id="transactionList" aria-live="polite"></div></section>
+			<section class="insight-grid" aria-label="Spending insights"><article class="card insight-card month-insight"><p class="label">THIS MONTH</p><h2 id="monthlySpending">₹0.00</h2><p class="muted" id="monthLabel">Current month expenses</p></article><article class="card insight-card top-insight"><p class="label">TOP SPENDING</p><h2 id="topCategory">No spending data yet.</h2><p class="muted">Largest expense category</p></article><article class="card smart-insight"><p class="label">SMART INSIGHT</p><p id="smartMessage">Start adding transactions to understand your spending.</p></article></section>
+			<section class="recent-card card" aria-labelledby="recentTitle"><div class="section-heading"><div><p class="label">LATEST MOVES</p><h2 id="recentTitle">Recent activity</h2></div><span class="section-number">03</span></div><div class="recent-list" id="recentList" aria-live="polite"></div></section>
+		</main>
+		<footer><p><span class="footer-dot"></span> SpendWise</p><span>Your data stays in this browser</span></footer>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
