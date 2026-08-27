@@ -18,7 +18,8 @@ function setTheme(theme) {
 setTheme(localStorage.getItem('rahul-theme') || 'dark');
 themeToggle.addEventListener('click', () => setTheme(body.classList.contains('light-theme') ? 'dark' : 'light'));
 
-menuToggle.addEventListener('click', () => {
+menuToggle.addEventListener('click', (e) => {
+  e.stopPropagation();
   const isOpen = siteNav.classList.toggle('open');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
 });
@@ -28,6 +29,23 @@ navLinks.forEach((link) => {
     siteNav.classList.remove('open');
     menuToggle.setAttribute('aria-expanded', 'false');
   });
+});
+
+// Close mobile nav when clicking outside
+document.addEventListener('click', (e) => {
+  if (siteNav.classList.contains('open') && !siteNav.contains(e.target) && !menuToggle.contains(e.target)) {
+    siteNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// Close mobile nav on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && siteNav.classList.contains('open')) {
+    siteNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.focus();
+  }
 });
 
 function updateScrollState() {
