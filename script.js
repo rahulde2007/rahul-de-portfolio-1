@@ -572,14 +572,25 @@ function initSkillsOrbit() {
   const skillNodes = [];
   skillsGrid.querySelectorAll('.skill').forEach((skillEl) => {
     const h3 = skillEl.querySelector('h3');
-    const items = skillEl.querySelectorAll('.skill-list span');
+    const items = skillEl.querySelectorAll('.skill-list > span');
     items.forEach((item) => {
       const svg = item.querySelector('svg');
       const b = item.querySelector('b');
-      // Text: full item text, badge: b content
-      const text = item.textContent.replace(b ? b.textContent : '', '').trim();
+      // Clone item to extract only the skill name text without inner badge, text icon or svg text
+      const clone = item.cloneNode(true);
+      clone.querySelectorAll('svg, b, .skill-text-icon').forEach((el) => el.remove());
+      const text = clone.textContent.trim();
       const badge = b ? b.textContent.trim() : '';
-      skillNodes.push({ text, badge, svgHTML: svg ? svg.outerHTML : '', category: h3 ? h3.textContent.trim() : '' });
+
+      // Skip empty, invalid or incomplete duplicate labels (e.g. standalone "J" or "JS")
+      if (!text || text === 'J' || text === 'JS') return;
+
+      skillNodes.push({
+        text,
+        badge,
+        svgHTML: svg ? svg.outerHTML : '',
+        category: h3 ? h3.textContent.trim() : ''
+      });
     });
   });
 
