@@ -12,6 +12,18 @@
 </head>
 <body>
 	<canvas id="futuristic-bg" class="futuristic-bg cyber-bg" aria-hidden="true"></canvas>
+	<div class="portfolio-backdrop" aria-hidden="true">
+		<div class="starfield">
+			<span class="star star-1"></span><span class="star star-2"></span><span class="star star-3"></span>
+			<span class="star star-4"></span><span class="star star-5"></span><span class="star star-6"></span>
+			<span class="star star-7"></span><span class="star star-8"></span><span class="star star-9"></span>
+			<span class="star star-10"></span><span class="star star-11"></span><span class="star star-12"></span>
+			<span class="star star-13"></span><span class="star star-14"></span><span class="star star-15"></span>
+			<span class="star star-16"></span><span class="star star-17"></span><span class="star star-18"></span>
+		</div>
+		<div class="glow-orb glow-orb-purple"></div>
+		<div class="glow-orb glow-orb-cyan"></div>
+	</div>
 	<div class="scroll-progress" aria-hidden="true"><span></span></div>
 	
 	<header class="site-header">
@@ -165,16 +177,21 @@
 		</section>
 
 		<!-- 04. Skills Section -->
-		<section id="skills" class="section-pad skills-section">
+		<section id="skills" class="section-pad skills-section skills-orbit-section">
 			<div class="section-heading reveal">
-				<p class="kicker">03 / WHAT I AM BUILDING</p>
-				<h2>Skills in<br><i>progress.</i></h2>
+				<p class="kicker tech-orbit-kicker">TECHNICAL ECOSYSTEM</p>
+				<h2>My Tech <i>Orbit</i></h2>
+				<p class="heading-note">The technologies and concepts orbiting my engineering core — hover each planet to explore.</p>
 			</div>
 			<!-- Skills orbit container (populated by JS) -->
-			<div class="skills-orbit-container" id="skillsOrbitContainer" aria-hidden="true">
+			<div class="skills-orbit-container" id="skillsOrbitContainer" aria-label="Technologies in my technical ecosystem">
 				<div class="orbit-track"></div>
 				<div class="orbit-track"></div>
-				<div class="skills-orbit-center">SKILLS<br>IN ORBIT</div>
+				<div class="orbit-track"></div>
+				<div class="skills-orbit-center" aria-label="Engineering core">
+					<svg viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="32" rx="25" ry="10" transform="rotate(30 32 32)"></ellipse><ellipse cx="32" cy="32" rx="25" ry="10" transform="rotate(-30 32 32)"></ellipse><circle cx="32" cy="32" r="5"></circle></svg>
+					<span>CORE</span>
+				</div>
 			</div>
 			<div class="skills-grid">
 				<article class="skill reveal">
@@ -233,6 +250,16 @@
 						<h3>Exploring</h3>
 						<div class="skill-list">
 							<span><svg class="tech-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2L14.4 8.6L21 11L14.4 13.4L12 20L9.6 13.4L3 11L9.6 8.6L12 2Z" fill="#A855F7"/><circle cx="19" cy="5" r="2" fill="#38BDF8"/><circle cx="5" cy="19" r="1.5" fill="#38BDF8"/></svg>AI &amp; Data <b>Exploring</b></span>
+						</div>
+					</div>
+				</article>
+				<article class="skill reveal">
+					<span class="skill-index">07</span>
+					<div>
+						<h3>Modern Languages</h3>
+						<div class="skill-list">
+							<span><span class="skill-text-icon">J</span>Java <b>Exploring</b></span>
+							<span><span class="skill-text-icon">JS</span>JavaScript <b>Exploring</b></span>
 						</div>
 					</div>
 				</article>
