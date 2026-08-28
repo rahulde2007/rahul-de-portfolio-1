@@ -555,3 +555,55 @@ if (document.readyState === 'loading') {
 } else {
   initFuturisticBackground();
 }
+
+function initSkillsOrbit() {
+  const container = document.getElementById('skillsOrbitContainer');
+  const skillsGrid = document.querySelector('.skills-grid');
+  if (!container || !skillsGrid) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const skills = [];
+  skillsGrid.querySelectorAll('.skill').forEach((skillEl) => {
+    const category = skillEl.querySelector('h3');
+    skillEl.querySelectorAll('.skill-list span').forEach((item) => {
+      const badge = item.querySelector('b');
+      const svg = item.querySelector('svg');
+      skills.push({ text: item.textContent.replace(badge ? badge.textContent : '', '').trim(), badge: badge ? badge.textContent.trim() : '', svgHTML: svg ? svg.outerHTML : '', category: category ? category.textContent.trim() : '' });
+    });
+  });
+  if (!skills.length) return;
+  skillsGrid.classList.add('orbit-active');
+  const layers = [[], [], []];
+  skills.forEach((skill, index) => layers[index % 3].push(skill));
+  const getRadii = () => { const size = container.offsetWidth; return { inner: size * 0.25, middle: size * 0.34, outer: size * 0.42 }; };
+  function buildNodes(items, radiusKey, durationBase, directionFactor) {
+    items.forEach((skill, index) => {
+      const node = document.createElement('div');
+      node.className = 'skill-orbit-node';
+      node.setAttribute('aria-label', skill.text + (skill.badge ? ' - ' + skill.badge : ''));
+      const label = document.createElement('div');
+      label.className = 'skill-orbit-label';
+      if (skill.svgHTML) { const wrap = document.createElement('span'); wrap.innerHTML = skill.svgHTML; const svg = wrap.querySelector('svg'); if (svg) { svg.setAttribute('width', '14'); svg.setAttribute('height', '14'); label.appendChild(svg); } }
+      const text = document.createElement('span'); text.textContent = skill.text; label.appendChild(text);
+      if (skill.badge) { const badge = document.createElement('b'); badge.textContent = skill.badge; label.appendChild(badge); }
+      node.appendChild(label); container.appendChild(node);
+      node._skillData = { angle: 360 / items.length * index, radiusKey, durationBase, directionFactor, index, total: items.length };
+    });
+  }
+  buildNodes(layers[0], 'inner', 22, 1); buildNodes(layers[1], 'middle', 31, -1); buildNodes(layers[2], 'outer', 42, 1);
+  function applyRadii() {
+    const radii = getRadii();
+    container.querySelectorAll('.skill-orbit-node').forEach((node) => {
+      const data = node._skillData;
+      const radius = radii[data.radiusKey];
+      const duration = (data.durationBase + data.index * 2.5) * (data.total > 4 ? 1 : 1.3);
+      const tilt = data.radiusKey === 'inner' ? -14 : data.radiusKey === 'middle' ? 8 : 22;
+      node.style.cssText = `--orbit-start:${data.angle}deg;--orbit-radius:${radius}px;--orbit-duration:${duration}s;--orbit-depth:${(0.78 + data.index * 0.19 % 0.42).toFixed(2)};--orbit-tilt:${tilt}deg;animation-duration:${duration}s;animation-direction:${data.directionFactor === -1 ? 'reverse' : 'normal'};`;
+    });
+  }
+  applyRadii();
+  let resizeTimer;
+  window.addEventListener('resize', () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(applyRadii, 180); }, { passive: true });
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSkillsOrbit);
+else initSkillsOrbit();

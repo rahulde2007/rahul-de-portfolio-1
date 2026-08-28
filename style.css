@@ -2625,13 +2625,22 @@ h2 i {
 
 /* Mobile: smaller orbit area */
 @media (max-width: 768px) {
+    html {
+        overflow-x: hidden;
+    }
+
+    .hero-grid-art {
+        right: 0;
+    }
+
     .skills-section {
         overflow-x: hidden;
     }
 
     .skills-orbit-container {
-        width: min(380px, 96vw);
-        height: min(380px, 96vw);
+        width: min(380px, 100%);
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 
     .skill-orbit-label {
