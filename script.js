@@ -121,9 +121,9 @@ function initFuturisticBackground() {
 
   // Ambient glowing light areas (3 soft breathing cosmic blobs)
   const ambientBlobs = [
-    { bx: 0.20, by: 0.25, r: 0.45, hue: 188, phase: 0.0, speed: 0.00020 },
-    { bx: 0.80, by: 0.65, r: 0.40, hue: 220, phase: 2.1, speed: 0.00025 },
-    { bx: 0.50, by: 0.85, r: 0.38, hue: 275, phase: 4.2, speed: 0.00018 }
+    { bx: 0.20, by: 0.25, r: 0.45, hue: 75, phase: 0.0, speed: 0.00020 },
+    { bx: 0.80, by: 0.65, r: 0.40, hue: 75, phase: 2.1, speed: 0.00025 },
+    { bx: 0.50, by: 0.85, r: 0.38, hue: 75, phase: 4.2, speed: 0.00018 }
   ];
 
   // Particles & Traveling Pulses
@@ -143,8 +143,8 @@ function initFuturisticBackground() {
     for (let i = 0; i < count; i++) {
       const z = 0.15 + Math.random() * 0.85; // Depth factor: 0.15 (far) to 1.0 (near)
       const rand = Math.random();
-      // Cyber Glow Palette: Electric Cyan (55%), Tech Blue (30%), Subtle Violet (15%)
-      const hue = rand < 0.55 ? 188 : (rand < 0.85 ? 215 : 272);
+      // Keep the ambient motion inside the portfolio's existing lime accent family.
+      const hue = 75;
       const baseRadius = (isDesktop ? 1.4 : 1.0) + z * (isDesktop ? 2.4 : 1.8);
       particles.push({
         x: Math.random() * width,
@@ -222,7 +222,7 @@ function initFuturisticBackground() {
     // Desktop: 26 lines, 20 rows; Tablet: 18 lines, 14 rows; Mobile: 10 lines, 10 rows
     const lineCount = isDesktop ? 26 : (isTablet ? 18 : 10);
     const rowCount = isDesktop ? 20 : (isTablet ? 14 : 10);
-    const gridHue = isLight ? 205 : 188;
+    const gridHue = 75;
     const baseAlpha = isLight ? 0.25 : 0.55;
 
     ctx.save();
@@ -407,7 +407,7 @@ function initFuturisticBackground() {
           const pulseX = pA.x + (pB.x - pA.x) * dp.progress;
           const pulseY = pA.y + (pB.y - pA.y) * dp.progress;
           const pulseAlpha = Math.sin(dp.progress * Math.PI) * (isLight ? 0.6 : 0.9);
-          ctx.fillStyle = `hsla(185, 100%, 75%, ${pulseAlpha.toFixed(3)})`;
+          ctx.fillStyle = `hsla(75, 100%, 75%, ${pulseAlpha.toFixed(3)})`;
           ctx.beginPath();
           ctx.arc(pulseX, pulseY, isDesktop ? 2.5 : 2.0, 0, Math.PI * 2);
           ctx.fill();
@@ -449,7 +449,7 @@ function initFuturisticBackground() {
   function drawStatic() {
     ctx.clearRect(0, 0, width, height);
     const isLight = isLightMode();
-    const color = isLight ? 'rgba(30, 100, 160, 0.12)' : 'rgba(0, 230, 255, 0.2)';
+    const color = isLight ? 'rgba(111, 146, 24, 0.12)' : 'rgba(213, 243, 107, 0.2)';
     ctx.fillStyle = color;
     for (let i = 0; i < 50; i++) {
       const sx = (i * 137 + 40) % width;
@@ -555,3 +555,205 @@ if (document.readyState === 'loading') {
 } else {
   initFuturisticBackground();
 }
+
+/* ==========================================================================
+   SKILLS ORBIT ANIMATION
+   Reads skills from existing DOM, builds orbit nodes dynamically
+   ========================================================================== */
+function initSkillsOrbit() {
+  const container = document.getElementById('skillsOrbitContainer');
+  const skillsGrid = document.querySelector('.skills-grid');
+  if (!container || !skillsGrid) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return; // Keep static grid for accessibility
+
+  // Gather all skill items from the existing grid
+  const skillNodes = [];
+  skillsGrid.querySelectorAll('.skill').forEach((skillEl) => {
+    const h3 = skillEl.querySelector('h3');
+    const items = skillEl.querySelectorAll('.skill-list span');
+    items.forEach((item) => {
+      const svg = item.querySelector('svg');
+      const b = item.querySelector('b');
+      // Text: full item text, badge: b content
+      const text = item.textContent.replace(b ? b.textContent : '', '').trim();
+      const badge = b ? b.textContent.trim() : '';
+      skillNodes.push({ text, badge, svgHTML: svg ? svg.outerHTML : '', category: h3 ? h3.textContent.trim() : '' });
+    });
+  });
+
+  if (skillNodes.length === 0) return;
+
+  // Hide the original grid, show orbit container
+  skillsGrid.classList.add('orbit-active');
+
+  // Distribute the existing skills across three orbital layers.
+  const orbitLayers = [[], [], []];
+  skillNodes.forEach((skill, i) => orbitLayers[i % orbitLayers.length].push(skill));
+
+  // Compute radii based on container size
+  function getRadii() {
+    const size = container.offsetWidth;
+    return {
+      inner: size * 0.25,
+      middle: size * 0.34,
+      outer: size * 0.42
+    };
+  }
+
+  // Build orbit nodes
+  function buildNodes(skills, radiusKey, durationBase, directionFactor) {
+    skills.forEach((skill, i) => {
+      const angle = (360 / skills.length) * i;
+      const node = document.createElement('div');
+      node.className = 'skill-orbit-node';
+      node.setAttribute('aria-label', skill.text + (skill.badge ? ' — ' + skill.badge : ''));
+
+      const label = document.createElement('div');
+      label.className = 'skill-orbit-label';
+      if (skill.svgHTML) {
+        const svgWrap = document.createElement('span');
+        svgWrap.innerHTML = skill.svgHTML;
+        const svgEl = svgWrap.querySelector('svg');
+        if (svgEl) { svgEl.setAttribute('width', '14'); svgEl.setAttribute('height', '14'); label.appendChild(svgEl); }
+      }
+      const textSpan = document.createElement('span');
+      textSpan.textContent = skill.text;
+      label.appendChild(textSpan);
+      if (skill.badge) {
+        const b = document.createElement('b');
+        b.textContent = skill.badge;
+        label.appendChild(b);
+      }
+
+      node.appendChild(label);
+      container.appendChild(node);
+
+      // Hover: pause
+      node.addEventListener('mouseenter', () => node.classList.add('paused'));
+      node.addEventListener('mouseleave', () => node.classList.remove('paused'));
+      node.addEventListener('touchstart', () => node.classList.toggle('paused'), { passive: true });
+
+      // Store for dynamic radius update
+      node._skillData = { angle, radiusKey, durationBase, directionFactor, index: i, total: skills.length };
+    });
+  }
+
+  buildNodes(orbitLayers[0], 'inner', 22, 1);
+  buildNodes(orbitLayers[1], 'middle', 31, -1);
+  buildNodes(orbitLayers[2], 'outer', 42, 1);
+
+  // Apply CSS custom properties for animation
+  function applyRadii() {
+    const { inner, middle, outer } = getRadii();
+    container.querySelectorAll('.skill-orbit-node').forEach((node) => {
+      const d = node._skillData;
+      if (!d) return;
+      const r = d.radiusKey === 'inner' ? inner : (d.radiusKey === 'middle' ? middle : outer);
+      const dir = d.directionFactor;
+      const angleStart = d.angle;
+      const duration = (d.durationBase + d.index * 2.5) * (d.total > 4 ? 1 : 1.3);
+      const depth = 0.78 + ((d.index * 0.19) % 0.42);
+      const tilt = d.radiusKey === 'inner' ? -14 : (d.radiusKey === 'middle' ? 8 : 22);
+
+      node.style.cssText = `
+        --orbit-start: ${angleStart}deg;
+        --orbit-radius: ${r}px;
+        --orbit-duration: ${duration}s;
+        --orbit-depth: ${depth.toFixed(2)};
+        --orbit-tilt: ${tilt}deg;
+        animation-duration: ${duration}s;
+        animation-direction: ${dir === -1 ? 'reverse' : 'normal'};
+      `;
+    });
+  }
+
+  applyRadii();
+
+  // Re-apply on resize
+  let orbitResizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(orbitResizeTimer);
+    orbitResizeTimer = setTimeout(applyRadii, 180);
+  }, { passive: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initSkillsOrbit);
+} else {
+  initSkillsOrbit();
+}
+
+/* ==========================================================================
+   PHOTO ORBIT DOT — Dynamic radius based on actual photo frame size
+   ========================================================================== */
+function initPhotoOrbitDot() {
+  const frame = document.querySelector('.hero-photo-frame');
+  const dot = document.querySelector('.photo-orbit-dot');
+  if (!frame || !dot) return;
+
+  function updateOrbitRadius() {
+    const r = frame.offsetWidth / 2;
+    dot.style.setProperty('--orbit-r', r + 'px');
+  }
+
+  updateOrbitRadius();
+  window.addEventListener('resize', updateOrbitRadius, { passive: true });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPhotoOrbitDot);
+} else {
+  initPhotoOrbitDot();
+}
+
+/* ==========================================================================
+   MESSAGE SENT — Contact form animated success state
+   ========================================================================== */
+(function initMessageSent() {
+  const sendBtn = document.getElementById('contactSendBtn');
+  const overlay = document.getElementById('msgSentOverlay');
+  const resetBtn = document.getElementById('msgSentReset');
+  const textarea = document.getElementById('contactMsg');
+
+  if (!sendBtn || !overlay) return;
+
+  sendBtn.addEventListener('click', () => {
+    const msg = textarea ? textarea.value.trim() : '';
+    if (!msg) {
+      // Shake the textarea if empty
+      if (textarea) {
+        textarea.style.transition = 'border-color 0.15s ease';
+        textarea.style.borderColor = 'rgba(255, 100, 100, 0.6)';
+        setTimeout(() => { textarea.style.borderColor = ''; }, 1200);
+      }
+      return;
+    }
+
+    // Show overlay
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('visible');
+    sendBtn.disabled = true;
+
+    // In a real deployment this would POST/email. Here we open mailto as fallback.
+    const subject = encodeURIComponent('Message from Rahul De Portfolio');
+    const body = encodeURIComponent(msg);
+    // Silently attempt mailto (non-blocking)
+    try {
+      const a = document.createElement('a');
+      a.href = `mailto:rahulde937@gmail.com?subject=${subject}&body=${body}`;
+      a.click();
+    } catch (_) {}
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      overlay.classList.remove('visible');
+      overlay.setAttribute('aria-hidden', 'true');
+      if (textarea) textarea.value = '';
+      sendBtn.disabled = false;
+    });
+  }
+})();
+
