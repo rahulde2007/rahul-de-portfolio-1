@@ -94,19 +94,26 @@ body::before {
     opacity: 0.025;
 }
 
-/* Cyber Canvas Background */
-.cyber-bg {
+/* Futuristic Canvas Background */
+.futuristic-bg,
+.cyber-bg,
+#futuristic-bg,
+#cyber-canvas {
     position: fixed;
-    inset: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.85;
+    opacity: 1;
 }
 
-.light-theme .cyber-bg {
-    opacity: 0.35;
+.light-theme .futuristic-bg,
+.light-theme .cyber-bg,
+.light-theme #futuristic-bg,
+.light-theme #cyber-canvas {
+    opacity: 0.6;
 }
 
 /* Interactive & Accessibility Utilities */
@@ -428,16 +435,16 @@ h2 i {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: radial-gradient(circle at 85% 18%, rgba(38, 49, 37, 0.65) 0%, transparent 40%),
-        linear-gradient(135deg, rgba(17, 21, 18, 0.88) 20%, rgba(18, 25, 20, 0.92) 100%);
+    background: radial-gradient(circle at 85% 18%, rgba(38, 49, 37, 0.3) 0%, transparent 40%),
+        linear-gradient(135deg, rgba(16, 19, 17, 0.4) 20%, rgba(18, 25, 20, 0.5) 100%);
     border-bottom: 1px solid var(--line);
     overflow: hidden;
     z-index: 2;
 }
 
 .light-theme .hero {
-    background: radial-gradient(circle at 85% 18%, rgba(219, 231, 189, 0.65) 0%, transparent 40%),
-        linear-gradient(135deg, rgba(244, 245, 235, 0.9) 20%, rgba(231, 236, 223, 0.94) 100%);
+    background: radial-gradient(circle at 85% 18%, rgba(219, 231, 189, 0.35) 0%, transparent 40%),
+        linear-gradient(135deg, rgba(244, 245, 235, 0.65) 20%, rgba(231, 236, 223, 0.72) 100%);
 }
 
 .hero-grid-art {
@@ -715,12 +722,13 @@ h2 i {
    6. About & Education Section
    -------------------------------------------------------------------------- */
 .about-section {
-    background: rgba(23, 28, 24, 0.84);
-    backdrop-filter: blur(6px);
+    background: rgba(23, 28, 24, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .about-section {
-    background: rgba(229, 232, 221, 0.88);
+    background: rgba(229, 232, 221, 0.7);
 }
 
 .about-grid {
@@ -826,13 +834,14 @@ h2 i {
    7. Journey / Road Ahead Section
    -------------------------------------------------------------------------- */
 .journey-section {
-    background: rgba(17, 21, 18, 0.86);
-    backdrop-filter: blur(6px);
+    background: rgba(17, 21, 18, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     position: relative;
 }
 
 .light-theme .journey-section {
-    background: rgba(238, 240, 230, 0.88);
+    background: rgba(238, 240, 230, 0.7);
 }
 
 .journey-section .section-heading {
@@ -900,12 +909,13 @@ h2 i {
    8. Skills Section
    -------------------------------------------------------------------------- */
 .skills-section {
-    background: rgba(23, 28, 24, 0.84);
-    backdrop-filter: blur(6px);
+    background: rgba(23, 28, 24, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .skills-section {
-    background: rgba(229, 232, 221, 0.88);
+    background: rgba(229, 232, 221, 0.7);
 }
 
 .skills-grid {
@@ -986,12 +996,13 @@ h2 i {
    9. Projects Workbench Section
    -------------------------------------------------------------------------- */
 .projects-section {
-    background: rgba(17, 21, 18, 0.86);
-    backdrop-filter: blur(6px);
+    background: rgba(17, 21, 18, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .projects-section {
-    background: rgba(238, 240, 230, 0.88);
+    background: rgba(238, 240, 230, 0.7);
 }
 
 .projects-heading {
@@ -1215,13 +1226,13 @@ h2 i {
    11. Brand Statement & Pillars
    -------------------------------------------------------------------------- */
 .statement-section {
-    background: #111512;
+    background: rgba(17, 21, 18, 0.55);
     position: relative;
     overflow: hidden;
 }
 
 .light-theme .statement-section {
-    background: #eef0e6;
+    background: rgba(238, 240, 230, 0.75);
 }
 
 .statement-mark {
@@ -1281,12 +1292,13 @@ h2 i {
    12. Interests Section
    -------------------------------------------------------------------------- */
 .interests-section {
-    background: rgba(23, 28, 24, 0.84);
-    backdrop-filter: blur(6px);
+    background: rgba(23, 28, 24, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .interests-section {
-    background: rgba(229, 232, 221, 0.88);
+    background: rgba(229, 232, 221, 0.7);
 }
 
 .interest-grid {
@@ -1429,12 +1441,13 @@ h2 i {
    14. Contact & Social Links Section
    -------------------------------------------------------------------------- */
 .contact-section {
-    background: rgba(23, 28, 24, 0.84);
-    backdrop-filter: blur(6px);
+    background: rgba(23, 28, 24, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .contact-section {
-    background: rgba(229, 232, 221, 0.88);
+    background: rgba(229, 232, 221, 0.7);
 }
 
 .contact-grid {
