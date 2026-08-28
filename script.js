@@ -480,7 +480,6 @@ function initFuturisticBackground() {
     ctx.clearRect(0, 0, width, height);
 
     drawAmbientBlobs(timestamp);
-    drawPerspectiveGrid(timestamp, camDriftX, camDriftY, mouseOffX, mouseOffY);
     drawParticlesAndNetwork(timestamp, camDriftX, camDriftY, mouseOffX, mouseOffY);
   }
 

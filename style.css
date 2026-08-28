@@ -820,6 +820,7 @@ h2 i {
 }
 
 .hero-grid-art {
+    display: none;
     position: absolute;
     z-index: 0;
     width: 45vw;
