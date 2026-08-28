@@ -169,12 +169,12 @@ function initFuturisticBackground() {
 
   function resize() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    width = document.documentElement.clientWidth || window.innerWidth || document.body.clientWidth;
     height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     initParticles();
   }
