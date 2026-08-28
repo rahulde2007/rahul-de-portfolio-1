@@ -659,17 +659,17 @@ h2 i {
     align-items: center;
     justify-content: space-between;
     padding: 0 6vw;
-    background: rgba(5, 8, 22, 0.94);
+    background: transparent;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: none;
     z-index: 9999;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .light-theme .site-header {
-    background: rgba(242, 243, 233, 0.95);
-    border-bottom-color: var(--line);
+    background: transparent;
+    border-bottom-color: transparent;
 }
 
 .brand {
@@ -703,6 +703,13 @@ h2 i {
     display: flex;
     align-items: center;
     gap: 28px;
+    padding: 8px 18px;
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    border-radius: 999px;
+    background: rgba(11, 18, 48, 0.76);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22), 0 0 24px rgba(37, 99, 235, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     font-size: 13px;
     color: var(--muted);
     letter-spacing: 0.02em;
@@ -739,6 +746,10 @@ h2 i {
     align-items: center;
     justify-content: center;
     transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.light-theme .site-nav {
+    background: rgba(220, 232, 255, 0.82);
 }
 
 .theme-toggle:hover {
@@ -1879,6 +1890,41 @@ h2 i {
     font-style: normal;
     color: var(--muted);
     text-align: right;
+}
+
+.contact-socials {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 22px 0 8px;
+}
+
+.social-icon-button {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    background: rgba(5, 8, 22, 0.58);
+    border: 1px solid rgba(64, 85, 138, 0.72);
+    border-radius: 50%;
+    transition: color 0.22s ease, border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+}
+
+.social-icon-button svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    stroke: none;
+}
+
+.social-icon-button:hover,
+.social-icon-button:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: rgba(17, 16, 58, 0.8);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.2), 0 0 30px rgba(139, 92, 246, 0.12);
+    transform: translateY(-3px);
 }
 
 .contact-location {
@@ -3613,5 +3659,34 @@ h2 i {
     .contact-section::before {
         left: 0;
         width: min(400px, 100%);
+    }
+}
+
+@media (max-width: 900px) {
+    .site-nav.open {
+        left: 5vw;
+        width: calc(100% - 10vw);
+        border: 1px solid rgba(0, 217, 255, 0.2);
+        border-radius: 18px;
+        background: rgba(11, 18, 48, 0.9);
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3), 0 0 24px rgba(37, 99, 235, 0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+    }
+
+    .light-theme .site-nav.open {
+        background: rgba(220, 232, 255, 0.92);
+    }
+
+    .site-nav.open .nav-link.active::after {
+        display: block;
+        left: 10px;
+        right: auto;
+        bottom: 5px;
+        width: 24px;
+    }
+
+    .contact-socials {
+        flex-wrap: wrap;
     }
 }
