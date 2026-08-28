@@ -592,9 +592,26 @@ function initSkillsOrbit() {
   const orbitLayers = [[], [], []];
   skillNodes.forEach((skill, i) => orbitLayers[i % orbitLayers.length].push(skill));
 
-  // Compute radii based on container size
+  // Compute radii based on container size with mobile-safe fallback
   function getRadii() {
-    const size = container.offsetWidth;
+    const size = container.offsetWidth || container.getBoundingClientRect().width || Math.min(window.innerWidth * 0.9, 520);
+    const isMobile = window.innerWidth <= 480;
+    const isSmallMobile = window.innerWidth <= 360;
+
+    if (isSmallMobile) {
+      return {
+        inner: size * 0.22,
+        middle: size * 0.33,
+        outer: size * 0.43
+      };
+    }
+    if (isMobile) {
+      return {
+        inner: size * 0.23,
+        middle: size * 0.34,
+        outer: size * 0.44
+      };
+    }
     return {
       inner: size * 0.25,
       middle: size * 0.34,
@@ -647,6 +664,8 @@ function initSkillsOrbit() {
   // Apply CSS custom properties for animation
   function applyRadii() {
     const { inner, middle, outer } = getRadii();
+    const isMobile = window.innerWidth <= 480;
+
     container.querySelectorAll('.skill-orbit-node').forEach((node) => {
       const d = node._skillData;
       if (!d) return;
@@ -655,7 +674,9 @@ function initSkillsOrbit() {
       const angleStart = d.angle;
       const duration = (d.durationBase + d.index * 2.5) * (d.total > 4 ? 1 : 1.3);
       const depth = 0.78 + ((d.index * 0.19) % 0.42);
-      const tilt = d.radiusKey === 'inner' ? -14 : (d.radiusKey === 'middle' ? 8 : 22);
+      const tilt = isMobile
+        ? (d.radiusKey === 'inner' ? -8 : (d.radiusKey === 'middle' ? 5 : 12))
+        : (d.radiusKey === 'inner' ? -14 : (d.radiusKey === 'middle' ? 8 : 22));
 
       node.style.cssText = `
         --orbit-start: ${angleStart}deg;
@@ -671,12 +692,16 @@ function initSkillsOrbit() {
 
   applyRadii();
 
-  // Re-apply on resize
+  // Re-apply on resize, orientation change, and window load
   let orbitResizeTimer;
-  window.addEventListener('resize', () => {
+  const triggerRadiiUpdate = () => {
     clearTimeout(orbitResizeTimer);
-    orbitResizeTimer = setTimeout(applyRadii, 180);
-  }, { passive: true });
+    orbitResizeTimer = setTimeout(applyRadii, 100);
+  };
+
+  window.addEventListener('resize', triggerRadiiUpdate, { passive: true });
+  window.addEventListener('orientationchange', triggerRadiiUpdate, { passive: true });
+  window.addEventListener('load', applyRadii, { passive: true });
 }
 
 if (document.readyState === 'loading') {

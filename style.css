@@ -336,15 +336,92 @@ main > section:not(.achievement-section) {
     font-weight: 700;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 768px) {
     .skills-orbit-section .skills-orbit-container {
+        width: min(440px, 92vw);
+        height: min(440px, 92vw);
+        margin: 10px auto 30px;
+    }
+
+    .skills-orbit-section .skills-orbit-center {
+        width: 76px;
+        height: 76px;
+    }
+
+    .skills-orbit-section .skills-orbit-center svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .skills-orbit-section .skill-orbit-label {
+        font-size: 10.5px;
+        padding: 5px 10px;
+        gap: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-orbit-section .skills-orbit-container {
+        width: min(340px, 94vw);
+        height: min(340px, 94vw);
+        margin: 6px auto 20px;
+    }
+
+    .skills-orbit-section .skills-orbit-center {
+        width: 58px;
+        height: 58px;
+    }
+
+    .skills-orbit-section .skills-orbit-center svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .skills-orbit-section .skills-orbit-center span {
+        font-size: 7.5px;
+        letter-spacing: 0.12em;
+    }
+
+    .skills-orbit-section .skill-orbit-label {
+        font-size: 9px;
+        padding: 4px 8px;
+        gap: 4px;
+    }
+
+    .skills-orbit-section .skill-orbit-label b {
+        font-size: 7.5px;
+    }
+
+    .skills-orbit-section .skill-orbit-label svg {
+        width: 11px !important;
+        height: 11px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .skills-orbit-section .skills-orbit-container {
+        width: min(290px, 94vw);
+        height: min(290px, 94vw);
+    }
+
+    .skills-orbit-section .skills-orbit-center {
+        width: 48px;
+        height: 48px;
+    }
+
+    .skills-orbit-section .skills-orbit-center svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .skills-orbit-section .skills-orbit-center span {
         display: none;
     }
 
-    .skills-orbit-section .skills-grid.orbit-active {
-        display: grid;
-        width: 100%;
-        grid-template-columns: 1fr;
+    .skills-orbit-section .skill-orbit-label {
+        font-size: 8px;
+        padding: 3px 6px;
+        gap: 3px;
     }
 }
 
