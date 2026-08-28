@@ -462,24 +462,16 @@
 			</div>
 			<div class="contact-location reveal"><span>+</span> Kolkata, West Bengal, India</div>
 
-			<!-- Minimal message form (new) -->
+			<!-- SMS contact form -->
 			<div class="contact-message-form reveal" id="contactMessageForm">
-				<label for="contactMsg">SEND A QUICK MESSAGE</label>
-				<textarea id="contactMsg" placeholder="Write your message here…" aria-label="Your message"></textarea>
-				<button class="contact-send-btn" id="contactSendBtn" type="button">Send Message <span aria-hidden="true">↗</span></button>
-				<!-- Success overlay -->
-				<div class="msg-sent-overlay" id="msgSentOverlay" role="status" aria-live="polite" aria-hidden="true">
-					<div class="msg-checkmark">
-						<div class="msg-sent-glow" aria-hidden="true"></div>
-						<svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-							<circle class="msg-check-circle" cx="26" cy="26" r="25"/>
-							<path class="msg-check-tick" d="M14 27 l8 8 l16-16"/>
-						</svg>
-					</div>
-					<p class="msg-sent-title">Message Sent!</p>
-					<p class="msg-sent-sub">Thanks for reaching out. I'll get back to you soon.</p>
-					<button class="msg-sent-reset" id="msgSentReset" type="button">SEND ANOTHER</button>
+				<label for="contactName">SEND A QUICK MESSAGE</label>
+				<div class="contact-form-fields">
+					<input id="contactName" type="text" placeholder="Your Name" autocomplete="name" aria-label="Your name">
+					<input id="contactEmail" type="email" placeholder="your@email.com" autocomplete="email" aria-label="Your email">
+					<textarea id="contactMsg" placeholder="Your message here..." aria-label="Your message"></textarea>
 				</div>
+				<p class="contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
+				<button class="contact-send-btn" id="contactSendBtn" type="button">Send Message <span aria-hidden="true">→</span></button>
 			</div>
 
 			

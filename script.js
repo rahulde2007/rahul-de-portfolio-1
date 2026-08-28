@@ -121,9 +121,9 @@ function initFuturisticBackground() {
 
   // Ambient glowing light areas (3 soft breathing cosmic blobs)
   const ambientBlobs = [
-    { bx: 0.20, by: 0.25, r: 0.45, hue: 75, phase: 0.0, speed: 0.00020 },
-    { bx: 0.80, by: 0.65, r: 0.40, hue: 75, phase: 2.1, speed: 0.00025 },
-    { bx: 0.50, by: 0.85, r: 0.38, hue: 75, phase: 4.2, speed: 0.00018 }
+    { bx: 0.20, by: 0.25, r: 0.45, hue: 190, phase: 0.0, speed: 0.00020 },
+    { bx: 0.80, by: 0.65, r: 0.40, hue: 190, phase: 2.1, speed: 0.00025 },
+    { bx: 0.50, by: 0.85, r: 0.38, hue: 190, phase: 4.2, speed: 0.00018 }
   ];
 
   // Particles & Traveling Pulses
@@ -144,7 +144,7 @@ function initFuturisticBackground() {
       const z = 0.15 + Math.random() * 0.85; // Depth factor: 0.15 (far) to 1.0 (near)
       const rand = Math.random();
       // Keep the ambient motion inside the portfolio's existing lime accent family.
-      const hue = 75;
+      const hue = 190;
       const baseRadius = (isDesktop ? 1.4 : 1.0) + z * (isDesktop ? 2.4 : 1.8);
       particles.push({
         x: Math.random() * width,
@@ -222,7 +222,7 @@ function initFuturisticBackground() {
     // Desktop: 26 lines, 20 rows; Tablet: 18 lines, 14 rows; Mobile: 10 lines, 10 rows
     const lineCount = isDesktop ? 26 : (isTablet ? 18 : 10);
     const rowCount = isDesktop ? 20 : (isTablet ? 14 : 10);
-    const gridHue = 75;
+    const gridHue = 190;
     const baseAlpha = isLight ? 0.25 : 0.55;
 
     ctx.save();
@@ -407,7 +407,7 @@ function initFuturisticBackground() {
           const pulseX = pA.x + (pB.x - pA.x) * dp.progress;
           const pulseY = pA.y + (pB.y - pA.y) * dp.progress;
           const pulseAlpha = Math.sin(dp.progress * Math.PI) * (isLight ? 0.6 : 0.9);
-          ctx.fillStyle = `hsla(75, 100%, 75%, ${pulseAlpha.toFixed(3)})`;
+          ctx.fillStyle = `hsla(190, 100%, 75%, ${pulseAlpha.toFixed(3)})`;
           ctx.beginPath();
           ctx.arc(pulseX, pulseY, isDesktop ? 2.5 : 2.0, 0, Math.PI * 2);
           ctx.fill();
@@ -449,7 +449,7 @@ function initFuturisticBackground() {
   function drawStatic() {
     ctx.clearRect(0, 0, width, height);
     const isLight = isLightMode();
-    const color = isLight ? 'rgba(111, 146, 24, 0.12)' : 'rgba(213, 243, 107, 0.2)';
+    const color = isLight ? 'rgba(37, 99, 235, 0.12)' : 'rgba(0, 217, 255, 0.2)';
     ctx.fillStyle = color;
     for (let i = 0; i < 50; i++) {
       const sx = (i * 137 + 40) % width;
@@ -744,52 +744,47 @@ if (document.readyState === 'loading') {
   initPhotoOrbitDot();
 }
 
-/* ==========================================================================
-   MESSAGE SENT — Contact form animated success state
+/* ========================================================================== 
+   SMS contact form
    ========================================================================== */
-(function initMessageSent() {
-  const sendBtn = document.getElementById('contactSendBtn');
-  const overlay = document.getElementById('msgSentOverlay');
-  const resetBtn = document.getElementById('msgSentReset');
-  const textarea = document.getElementById('contactMsg');
+const SMS_RECIPIENT = 'YOUR_PHONE_NUMBER';
 
-  if (!sendBtn || !overlay) return;
+(function initSmsContactForm() {
+  const sendBtn = document.getElementById('contactSendBtn');
+  const nameInput = document.getElementById('contactName');
+  const emailInput = document.getElementById('contactEmail');
+  const textarea = document.getElementById('contactMsg');
+  const status = document.getElementById('contactFormStatus');
+
+  if (!sendBtn || !nameInput || !emailInput || !textarea || !status) return;
 
   sendBtn.addEventListener('click', () => {
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
     const msg = textarea ? textarea.value.trim() : '';
-    if (!msg) {
-      // Shake the textarea if empty
-      if (textarea) {
-        textarea.style.transition = 'border-color 0.15s ease';
-        textarea.style.borderColor = 'rgba(255, 100, 100, 0.6)';
-        setTimeout(() => { textarea.style.borderColor = ''; }, 1200);
-      }
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    status.className = 'contact-form-status';
+    if (!name || !email || !msg) {
+      status.textContent = 'Please complete your name, email, and message.';
+      status.classList.add('is-error');
       return;
     }
 
-    // Show overlay
-    overlay.setAttribute('aria-hidden', 'false');
-    overlay.classList.add('visible');
-    sendBtn.disabled = true;
+    if (!emailPattern.test(email)) {
+      status.textContent = 'Please enter a valid email address.';
+      status.classList.add('is-error');
+      return;
+    }
 
-    // In a real deployment this would POST/email. Here we open mailto as fallback.
-    const subject = encodeURIComponent('Message from Rahul De Portfolio');
-    const body = encodeURIComponent(msg);
-    // Silently attempt mailto (non-blocking)
-    try {
-      const a = document.createElement('a');
-      a.href = `mailto:rahulde937@gmail.com?subject=${subject}&body=${body}`;
-      a.click();
-    } catch (_) {}
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+    const isMobile = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+    if (!isMobile) {
+      status.textContent = 'SMS is available from a mobile device.';
+      return;
+    }
+
+    window.location.href = `sms:${SMS_RECIPIENT}?body=${body}`;
   });
-
-  if (resetBtn) {
-    resetBtn.addEventListener('click', () => {
-      overlay.classList.remove('visible');
-      overlay.setAttribute('aria-hidden', 'true');
-      if (textarea) textarea.value = '';
-      sendBtn.disabled = false;
-    });
-  }
 })();
 
