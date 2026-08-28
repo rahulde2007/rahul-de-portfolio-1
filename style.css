@@ -2346,11 +2346,6 @@ h2 i {
         padding: 4px;
     }
 
-    .hero-photo-img {
-        object-fit: contain;
-        object-position: center;
-    }
-
     .hero-copy {
         display: flex;
         flex-direction: column;
