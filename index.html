@@ -165,17 +165,6 @@
 					<p class="about-learning"><strong>CURRENTLY LEARNING</strong><span>C · Python · HTML · SQL · DBMS · Computer Networking · C++</span></p>
 				</div>
 			</div>
-			<div class="about-observation reveal" aria-label="Code observation note">
-				<div class="obs-header">
-					<span class="obs-file">OBSERVATION_001.txt</span>
-				</div>
-				<pre class="obs-code" aria-label="Code observation content"><span class="code-line"><span class="line-no">01</span><span><span class="token keyword">const</span> <span class="token var">curiosity</span> = <span class="token boolean">true</span>;</span></span>
-<span class="code-line"><span class="line-no">02</span><span><span class="token keyword">let</span> <span class="token var">ideas</span> = <span class="token boolean">[]</span>;</span></span>
-<span class="code-line"><span class="line-no">03</span><span><span class="token keyword">while</span> (<span class="token var">learning</span>) {</span></span>
-<span class="code-line"><span class="line-no">04</span><span>    <span class="token var">ideas</span>.push(<span class="token fn">tryAgain()</span>);</span></span>
-<span class="code-line"><span class="line-no">05</span><span>}</span></span></pre>
-				<p class="obs-comment">// always in progress</p>
-			</div>
 			<div class="education reveal">
 				<div class="education-label">EDUCATION <span>— 01</span></div>
 				<div class="education-main">
@@ -381,78 +370,138 @@
 				<p class="heading-note">The best way to learn is to build. Here are real projects built while exploring technology.</p>
 			</div>
 			<div class="projects-grid">
-				<article class="project-card project-card--full-stack reveal">
+				<article class="project-card project-card--studyflow reveal">
 					<div class="project-card-header">
-						<span class="project-category">FULL STACK</span>
-					</div>
-					<div class="project-image studyflow-image">
-						<span>PROJECT 01</span>
-						<div class="image-placeholder">SF</div>
+						<span class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</span>
+						<span class="project-header-lines" aria-hidden="true">
+							<span class="header-line header-line-1"></span>
+							<span class="header-line header-line-2"></span>
+							<span class="header-line header-line-3"></span>
+						</span>
 					</div>
 					<div class="project-info">
-						<p class="mono">01 / STUDYFLOW</p>
-						<h3>STUDYFLOW<br><span>Student Productivity Dashboard</span></h3>
-						<p>A modern dashboard for organizing study tasks, focused sessions and daily progress.</p>
-						<dl>
-							<dt>PROBLEM</dt>
-							<dd>Organize academic tasks and understand daily study progress.</dd>
-							<dt>FEATURES</dt>
-							<dd>Tasks · Timer · Goals · Streak · Focus Mode</dd>
-							<dt>STACK</dt>
-							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
+						<div class="project-top-row">
+							<span class="project-category">STUDENT PRODUCTIVITY</span>
+							<div class="project-actions" aria-label="Project links">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 8.4 21.4c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.4-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.5-1.4.1-2.8 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.8.7.7 1 1.6 1 2.7 0 3.7-2.3 4.6-4.5 4.8.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+								</a>
+								<a class="card-icon-button card-icon-button--secondary" href="./studyflow/index.html" aria-label="Open StudyFlow demo">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6h-2V7.4l-5.3 5.3-1.4-1.4L16.6 6H14V4ZM5 7h7v2H7v8h8v-5h2v7H5V7Z"/></svg>
+								</a>
+							</div>
+						</div>
+						<p class="project-label">01 / STUDYFLOW</p>
+						<h3 class="project-title">STUDYFLOW</h3>
+						<p class="project-subtitle">Student Productivity Dashboard</p>
+						<p class="project-description">A modern dashboard for organizing study tasks, focused sessions and daily progress.</p>
+						<div class="project-divider"></div>
+						<dl class="project-meta">
+							<div class="project-meta-row"><dt>PROBLEM</dt><dd>Organize academic tasks and understand daily study progress.</dd></div>
+							<div class="project-meta-row"><dt>FEATURES</dt><dd>Tasks · Timer · Goals · Streak · Focus Mode</dd></div>
+							<div class="project-meta-row"><dt>STACK</dt><dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd></div>
 						</dl>
-						<div class="project-links">
-							<a href="./studyflow/index.html" aria-label="View live demo of StudyFlow">VIEW LIVE DEMO ↗</a>
+						<div class="project-divider"></div>
+						<a class="project-demo-link" href="./studyflow/index.html" aria-label="View live demo of StudyFlow">VIEW LIVE DEMO <span>↗</span></a>
+						<div class="tech-tags">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
-				<article class="project-card project-card--ai-ml reveal">
+				<article class="project-card project-card--spendwise reveal">
 					<div class="project-card-header">
-						<span class="project-category">AI / ML</span>
-					</div>
-					<div class="project-image spendwise-image">
-						<span>PROJECT 02</span>
-						<div class="image-placeholder">SW</div>
+						<span class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</span>
+						<span class="project-header-lines" aria-hidden="true">
+							<span class="header-line header-line-1"></span>
+							<span class="header-line header-line-2"></span>
+							<span class="header-line header-line-3"></span>
+						</span>
 					</div>
 					<div class="project-info">
-						<p class="mono">02 / SPENDWISE</p>
-						<h3>SPENDWISE<br><span>Student Expense Tracker</span></h3>
-						<p>A modern dashboard for recording transactions and understanding everyday spending patterns.</p>
-						<dl>
-							<dt>PROBLEM</dt>
-							<dd>Make spending across daily student needs easier to see and understand.</dd>
-							<dt>FEATURES</dt>
-							<dd>Income · Expenses · Filters · Insights · Recent activity</dd>
-							<dt>STACK</dt>
-							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
+						<div class="project-top-row">
+							<span class="project-category">STUDENT FINANCE</span>
+							<div class="project-actions" aria-label="Project links">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 8.4 21.4c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.4-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.5-1.4.1-2.8 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.8.7.7 1 1.6 1 2.7 0 3.7-2.3 4.6-4.5 4.8.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+								</a>
+								<a class="card-icon-button card-icon-button--secondary" href="./spendwise/index.html" aria-label="Open SpendWise demo">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6h-2V7.4l-5.3 5.3-1.4-1.4L16.6 6H14V4ZM5 7h7v2H7v8h8v-5h2v7H5V7Z"/></svg>
+								</a>
+							</div>
+						</div>
+						<p class="project-label">02 / SPENDWISE</p>
+						<h3 class="project-title">SPENDWISE</h3>
+						<p class="project-subtitle">Student Expense Tracker</p>
+						<p class="project-description">A modern dashboard for recording transactions and understanding everyday spending patterns.</p>
+						<div class="project-divider"></div>
+						<dl class="project-meta">
+							<div class="project-meta-row"><dt>PROBLEM</dt><dd>Make spending across daily student needs easier to see and understand.</dd></div>
+							<div class="project-meta-row"><dt>FEATURES</dt><dd>Income · Expenses · Filters · Insights · Recent activity</dd></div>
+							<div class="project-meta-row"><dt>STACK</dt><dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd></div>
 						</dl>
-						<div class="project-links">
-							<a href="./spendwise/index.html" aria-label="View live demo of SpendWise">VIEW LIVE DEMO ↗</a>
+						<div class="project-divider"></div>
+						<a class="project-demo-link" href="./spendwise/index.html" aria-label="View live demo of SpendWise">VIEW LIVE DEMO <span>↗</span></a>
+						<div class="tech-tags">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
-				<article class="project-card project-card--algorithm reveal">
+				<article class="project-card project-card--army reveal">
 					<div class="project-card-header">
-						<span class="project-category">ALGORITHM</span>
-					</div>
-					<div class="project-image army-ready-image">
-						<span>PROJECT 03</span>
-						<div class="image-placeholder">AR</div>
+						<span class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</span>
+						<span class="project-header-lines" aria-hidden="true">
+							<span class="header-line header-line-1"></span>
+							<span class="header-line header-line-2"></span>
+							<span class="header-line header-line-3"></span>
+						</span>
 					</div>
 					<div class="project-info">
-						<p class="mono">03 / ARMY READY</p>
-						<h3>ARMY READY<br><span>Personal Discipline &amp; Goal Dashboard</span></h3>
-						<p>A personal development dashboard designed around discipline, consistency, learning and goal tracking.</p>
-						<dl>
-							<dt>PROBLEM</dt>
-							<dd>Make consistency across daily goals, habits and learning easier to maintain.</dd>
-							<dt>FEATURES</dt>
-							<dd>Goals · Habits · Learning · Focus · Streak · Notes</dd>
-							<dt>STACK</dt>
-							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
+						<div class="project-top-row">
+							<span class="project-category">PERSONAL DISCIPLINE</span>
+							<div class="project-actions" aria-label="Project links">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2A9.8 9.8 0 0 0 8.4 21.4c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.6-1.1-1.6-.9-.6.1-.6.1-.6 1 .1 1.6 1 1.6 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.7-1.4-2.2-.2-4.5-1.1-4.5-4.8 0-1.1.4-2 1-2.7-.1-.3-.5-1.4.1-2.8 0 0 .8-.3 2.7 1a9.2 9.2 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.5.1 2.8.7.7 1 1.6 1 2.7 0 3.7-2.3 4.6-4.5 4.8.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.7.5A9.8 9.8 0 0 0 12 2.2Z"/></svg>
+								</a>
+								<a class="card-icon-button card-icon-button--secondary" href="./army-ready/index.html" aria-label="Open Army Ready demo">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6h-2V7.4l-5.3 5.3-1.4-1.4L16.6 6H14V4ZM5 7h7v2H7v8h8v-5h2v7H5V7Z"/></svg>
+								</a>
+							</div>
+						</div>
+						<p class="project-label">03 / ARMY READY</p>
+						<h3 class="project-title">ARMY READY</h3>
+						<p class="project-subtitle">Personal Discipline &amp; Goal Dashboard</p>
+						<p class="project-description">A personal development dashboard designed around discipline, consistency, learning and goal tracking.</p>
+						<div class="project-divider"></div>
+						<dl class="project-meta">
+							<div class="project-meta-row"><dt>PROBLEM</dt><dd>Make consistency across daily goals, habits and learning easier to maintain.</dd></div>
+							<div class="project-meta-row"><dt>FEATURES</dt><dd>Goals · Habits · Learning · Focus · Streak · Notes</dd></div>
+							<div class="project-meta-row"><dt>STACK</dt><dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd></div>
 						</dl>
-						<div class="project-links">
-							<a href="./army-ready/index.html" aria-label="View live demo of Army Ready">VIEW LIVE DEMO ↗</a>
+						<div class="project-divider"></div>
+						<a class="project-demo-link" href="./army-ready/index.html" aria-label="View live demo of Army Ready">VIEW LIVE DEMO <span>↗</span></a>
+						<div class="tech-tags">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
