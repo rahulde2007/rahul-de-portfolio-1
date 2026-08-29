@@ -150,6 +150,30 @@ function updateScrollState() {
   navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`));
 }
 
+const runSnippetButton = document.getElementById('runSnippetButton');
+const snippetOutput = document.getElementById('snippetOutput');
+const snippetOutputText = document.getElementById('snippetOutputText');
+const snippetLoader = document.getElementById('snippetLoader');
+
+if (runSnippetButton && snippetOutput && snippetOutputText && snippetLoader) {
+  const outputText = `OUTPUT\n\nName: Rahul De\nFather's Name: Goutam De\nMother's Name: Rinku De\nVillage: Ragra\nDistrict: Jhargram\nState: West Bengal`;
+
+  runSnippetButton.addEventListener('click', () => {
+    snippetOutput.classList.add('is-visible');
+    snippetLoader.style.display = 'inline-flex';
+    snippetOutputText.textContent = '';
+    runSnippetButton.disabled = true;
+    runSnippetButton.textContent = 'Running...';
+
+    setTimeout(() => {
+      snippetOutputText.textContent = outputText;
+      snippetLoader.style.display = 'none';
+      runSnippetButton.disabled = false;
+      runSnippetButton.textContent = '▶ Run Code';
+    }, 900);
+  });
+}
+
 window.addEventListener('scroll', updateScrollState, { passive: true });
 window.addEventListener('resize', updateScrollState);
 updateScrollState();
