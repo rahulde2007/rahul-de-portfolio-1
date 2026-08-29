@@ -81,7 +81,15 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       observer.unobserve(entry.target);
     });
   }, { threshold: 0.12 });
-  revealItems.forEach((item) => revealObserver.observe(item));
+
+  revealItems.forEach((item) => {
+    const rect = item.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 1.1 && rect.bottom > 0) {
+      item.classList.add('visible');
+      return;
+    }
+    revealObserver.observe(item);
+  });
 }
 
 /* ==========================================================================

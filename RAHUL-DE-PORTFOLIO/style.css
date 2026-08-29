@@ -1266,6 +1266,7 @@ h2 i {
     text-align: right;
 }
 
+.token { color: inherit; }
 .code-line .token.keyword { color: #76d7ff; }
 .code-line .token.var { color: #7dd3fc; }
 .code-line .token.boolean { color: #8b5cf6; }
@@ -2345,7 +2346,15 @@ h2 i {
     transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.reveal.visible {
+.about-observation.reveal,
+.project-card.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.reveal.visible,
+.about-observation.reveal.visible,
+.project-card.reveal.visible {
     opacity: 1;
     transform: translateY(0);
 }
