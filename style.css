@@ -70,6 +70,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
     -webkit-text-size-adjust: 100%;
+    overflow-x: hidden;
 }
 
 body {
@@ -128,32 +129,146 @@ body::before {
     animation: star-twinkle 4.8s ease-in-out infinite;
 }
 
-.star:nth-child(3n) { color: #45e8ff; background: #45e8ff; }
-.star:nth-child(4n) { color: #b879ff; background: #b879ff; }
-.star:nth-child(5n) { color: #ff83c7; background: #ff83c7; }
-.star:nth-child(3n + 1) { width: 1px; height: 1px; }
-.star-1 { top: 12%; left: 8%; animation-delay: -1.2s; }
-.star-2 { top: 20%; left: 22%; animation-delay: -3.6s; }
-.star-3 { top: 8%; left: 39%; animation-delay: -2.1s; }
-.star-4 { top: 28%; left: 53%; animation-delay: -4.2s; }
-.star-5 { top: 14%; left: 68%; animation-delay: -0.8s; }
-.star-6 { top: 36%; left: 84%; animation-delay: -2.9s; }
-.star-7 { top: 48%; left: 12%; animation-delay: -4.8s; }
-.star-8 { top: 57%; left: 31%; animation-delay: -1.7s; }
-.star-9 { top: 44%; left: 47%; animation-delay: -3.1s; }
-.star-10 { top: 64%; left: 63%; animation-delay: -0.4s; }
-.star-11 { top: 52%; left: 78%; animation-delay: -2.4s; }
-.star-12 { top: 74%; left: 92%; animation-delay: -4.4s; }
-.star-13 { top: 82%; left: 6%; animation-delay: -2.7s; }
-.star-14 { top: 88%; left: 25%; animation-delay: -0.9s; }
-.star-15 { top: 78%; left: 44%; animation-delay: -3.9s; }
-.star-16 { top: 92%; left: 59%; animation-delay: -1.9s; }
-.star-17 { top: 84%; left: 73%; animation-delay: -3.4s; }
-.star-18 { top: 70%; left: 87%; animation-delay: -1.4s; }
+.star:nth-child(3n) {
+    color: #45e8ff;
+    background: #45e8ff;
+}
+
+.star:nth-child(4n) {
+    color: #b879ff;
+    background: #b879ff;
+}
+
+.star:nth-child(5n) {
+    color: #ff83c7;
+    background: #ff83c7;
+}
+
+.star:nth-child(3n + 1) {
+    width: 1px;
+    height: 1px;
+}
+
+.star-1 {
+    top: 12%;
+    left: 8%;
+    animation-delay: -1.2s;
+}
+
+.star-2 {
+    top: 20%;
+    left: 22%;
+    animation-delay: -3.6s;
+}
+
+.star-3 {
+    top: 8%;
+    left: 39%;
+    animation-delay: -2.1s;
+}
+
+.star-4 {
+    top: 28%;
+    left: 53%;
+    animation-delay: -4.2s;
+}
+
+.star-5 {
+    top: 14%;
+    left: 68%;
+    animation-delay: -0.8s;
+}
+
+.star-6 {
+    top: 36%;
+    left: 84%;
+    animation-delay: -2.9s;
+}
+
+.star-7 {
+    top: 48%;
+    left: 12%;
+    animation-delay: -4.8s;
+}
+
+.star-8 {
+    top: 57%;
+    left: 31%;
+    animation-delay: -1.7s;
+}
+
+.star-9 {
+    top: 44%;
+    left: 47%;
+    animation-delay: -3.1s;
+}
+
+.star-10 {
+    top: 64%;
+    left: 63%;
+    animation-delay: -0.4s;
+}
+
+.star-11 {
+    top: 52%;
+    left: 78%;
+    animation-delay: -2.4s;
+}
+
+.star-12 {
+    top: 74%;
+    left: 92%;
+    animation-delay: -4.4s;
+}
+
+.star-13 {
+    top: 82%;
+    left: 6%;
+    animation-delay: -2.7s;
+}
+
+.star-14 {
+    top: 88%;
+    left: 25%;
+    animation-delay: -0.9s;
+}
+
+.star-15 {
+    top: 78%;
+    left: 44%;
+    animation-delay: -3.9s;
+}
+
+.star-16 {
+    top: 92%;
+    left: 59%;
+    animation-delay: -1.9s;
+}
+
+.star-17 {
+    top: 84%;
+    left: 73%;
+    animation-delay: -3.4s;
+}
+
+.star-18 {
+    top: 70%;
+    left: 87%;
+    animation-delay: -1.4s;
+}
 
 @keyframes star-twinkle {
-    0%, 100% { opacity: 0.28; transform: scale(0.8); }
-    50% { opacity: 0.95; transform: scale(1.35); }
+
+    0%,
+    100% {
+        opacity: 0.28;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.95;
+        transform: scale(1.35);
+    }
 }
 
 .glow-orb {
@@ -182,22 +297,30 @@ body::before {
 }
 
 @keyframes orb-drift {
-    from { transform: translate3d(-18px, -12px, 0) scale(0.95); }
-    to { transform: translate3d(24px, 20px, 0) scale(1.08); }
+    from {
+        transform: translate3d(-18px, -12px, 0) scale(0.95);
+    }
+
+    to {
+        transform: translate3d(24px, 20px, 0) scale(1.08);
+    }
 }
 
 main,
 .site-footer {
     position: relative;
     z-index: 2;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-main > section,
+main>section,
 .site-footer {
     background: transparent;
 }
 
-main > section:not(.achievement-section) {
+main>section:not(.achievement-section) {
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
@@ -225,6 +348,7 @@ main > section:not(.achievement-section) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .star,
     .glow-orb {
         animation: none;
@@ -958,6 +1082,9 @@ h2 i {
 
 /* Hero Profile Photo */
 .hero-photo {
+    --profile-photo-size: clamp(200px, 20vw, 270px);
+    --profile-orbit-padding: 18px;
+    --profile-orbit-radius: calc((var(--profile-photo-size) / 2) + var(--profile-orbit-padding));
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -966,8 +1093,8 @@ h2 i {
 
 .hero-photo-frame {
     position: relative;
-    width: clamp(200px, 20vw, 270px);
-    height: clamp(200px, 20vw, 270px);
+    width: var(--profile-photo-size);
+    height: var(--profile-photo-size);
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     padding: 5px;
@@ -1534,7 +1661,7 @@ h2 i {
 .achievement-section .milestones-heading .kicker,
 .achievement-section .milestones-heading h2,
 .achievement-section .milestones-heading h2 i,
-.achievement-section .milestones-heading > p,
+.achievement-section .milestones-heading>p,
 .achievement-section .milestone-number,
 .achievement-section .milestone-card .mono,
 .achievement-section .milestone-card h3,
@@ -2380,6 +2507,9 @@ h2 i {
     }
 
     .hero-photo {
+        --profile-photo-size: min(180px, 48vw);
+        --profile-orbit-padding: 14px;
+        --profile-orbit-radius: calc((var(--profile-photo-size) / 2) + var(--profile-orbit-padding) + 4px);
         order: -1;
         width: 100%;
         margin-bottom: 4px;
@@ -2388,9 +2518,14 @@ h2 i {
     }
 
     .hero-photo-frame {
-        width: min(180px, 48vw);
-        height: min(180px, 48vw);
+        width: var(--profile-photo-size);
+        height: var(--profile-photo-size);
         padding: 4px;
+    }
+
+    .photo-orbit-wrapper {
+        width: calc(var(--profile-photo-size) + (var(--profile-orbit-padding) * 2));
+        height: calc(var(--profile-photo-size) + (var(--profile-orbit-padding) * 2));
     }
 
     .hero-copy {
@@ -2761,10 +2896,13 @@ h2 i {
    22a. Photo Orbit / Ring Effect
    -------------------------------------------------------------------------- */
 .photo-orbit-wrapper {
+    --photo-orbit-wrapper-size: calc(var(--profile-photo-size) + (var(--profile-orbit-padding) * 2));
     position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
+    width: var(--photo-orbit-wrapper-size);
+    height: var(--photo-orbit-wrapper-size);
+    aspect-ratio: 1 / 1;
     perspective: 900px;
     transform-style: preserve-3d;
 }
@@ -2773,7 +2911,7 @@ h2 i {
 .photo-orbit-wrapper::before {
     content: '';
     position: absolute;
-    inset: -18px;
+    inset: var(--profile-orbit-padding);
     border-radius: 50%;
     border: 1.5px dashed rgba(0, 217, 255, 0.30);
     animation: photo-orbit-slow 18s linear infinite;
@@ -2784,7 +2922,7 @@ h2 i {
 .photo-orbit-wrapper::after {
     content: '';
     position: absolute;
-    inset: -8px;
+    inset: calc(var(--profile-orbit-padding) - 10px);
     border-radius: 50%;
     border: 2px solid transparent;
     border-top-color: var(--accent);
@@ -2833,11 +2971,11 @@ h2 i {
 
 @keyframes photo-dot-orbit {
     from {
-        transform: rotate(0deg) translateX(calc(var(--orbit-r, 110px) + 18px));
+        transform: rotate(0deg) translateX(var(--profile-orbit-radius));
     }
 
     to {
-        transform: rotate(360deg) translateX(calc(var(--orbit-r, 110px) + 18px));
+        transform: rotate(360deg) translateX(var(--profile-orbit-radius));
     }
 }
 
@@ -2991,6 +3129,7 @@ h2 i {
 }
 
 @keyframes orbit-ring-breathe {
+
     0%,
     100% {
         opacity: 0.45;
@@ -3069,6 +3208,7 @@ h2 i {
 }
 
 @keyframes orbit-label-depth {
+
     0%,
     100% {
         opacity: calc(0.64 + (var(--orbit-depth, 1) * 0.25));
@@ -3189,6 +3329,7 @@ h2 i {
 }
 
 @media (max-width: 900px) {
+
     .about-section::after,
     .skills-section::after,
     .interests-section::after {
@@ -3196,7 +3337,9 @@ h2 i {
         width: min(480px, 100%);
     }
 }
-        overflow: hidden;
+
+overflow: hidden;
+
 .journey-section::after,
 .projects-section::after {
     content: '';
@@ -3643,6 +3786,7 @@ h2 i {
 }
 
 @media (max-width: 1100px) {
+
     .about-section::after,
     .skills-section::after,
     .interests-section::after {
