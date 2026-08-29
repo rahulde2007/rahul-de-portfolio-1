@@ -92,6 +92,25 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   });
 }
 
+const projectCards = document.querySelectorAll('.project-card[data-live-url]');
+projectCards.forEach((card) => {
+  const liveUrl = card.dataset.liveUrl;
+  if (!liveUrl) return;
+
+  const openProject = (event) => {
+    if (event.target.closest('a')) return;
+    window.open(liveUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  card.addEventListener('click', openProject);
+  card.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      window.open(liveUrl, '_blank', 'noopener,noreferrer');
+    }
+  });
+});
+
 /* ==========================================================================
    FUTURISTIC 3D ANIMATED CANVAS BACKGROUND
    Engine: Full Desktop (1366x768, 1440x900, 1920x1080) & Mobile Compatibility
