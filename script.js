@@ -16,16 +16,25 @@ function initWelcomeAssistant() {
 
   if (!assistant || !bubble || !card || !closeButton || !textElement) return;
 
-  const message = "WELCOME TO RAHUL'S PORTFOLIO";
+  const message = "Hi! 👋 Welcome to Rahul's Portfolio. I'm Rahul's AI Assistant.";
+  const welcomeVisibleMs = 3000;
   let typingTimer = null;
   let closeTimer = null;
   let isOpen = false;
+  let isDismissed = false;
 
   function clearTyping() {
     if (typingTimer) {
       clearInterval(typingTimer);
       typingTimer = null;
     }
+  }
+
+  function startWelcomeTimer() {
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(() => {
+      hideWelcome();
+    }, welcomeVisibleMs);
   }
 
   function showMessage() {
@@ -37,38 +46,34 @@ function initWelcomeAssistant() {
       textElement.textContent = message.slice(0, index);
       if (index >= message.length) {
         clearTyping();
-        closeTimer = setTimeout(() => {
-          if (isOpen) {
-            assistant.classList.remove('is-open');
-            bubble.setAttribute('aria-expanded', 'false');
-            isOpen = false;
-          }
-        }, 2400);
       }
-    }, 70);
+    }, 40);
   }
 
   function openAssistant() {
-    if (isOpen) return;
-    clearTimeout(closeTimer);
+    if (isDismissed || isOpen) return;
     assistant.classList.add('is-open');
     bubble.setAttribute('aria-expanded', 'true');
     isOpen = true;
     showMessage();
+    startWelcomeTimer();
   }
 
-  function minimizeAssistant() {
+  function hideWelcome() {
     clearTimeout(closeTimer);
+    closeTimer = null;
     assistant.classList.remove('is-open');
     bubble.setAttribute('aria-expanded', 'false');
     isOpen = false;
+    isDismissed = true;
     clearTyping();
     textElement.textContent = '';
   }
 
   bubble.addEventListener('click', () => {
+    if (isDismissed) return;
     if (isOpen) {
-      minimizeAssistant();
+      hideWelcome();
     } else {
       openAssistant();
     }
@@ -76,18 +81,18 @@ function initWelcomeAssistant() {
 
   closeButton.addEventListener('click', (event) => {
     event.stopPropagation();
-    minimizeAssistant();
+    hideWelcome();
   });
 
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && isOpen) {
-      minimizeAssistant();
+    if (event.key === 'Escape' && isOpen && !isDismissed) {
+      hideWelcome();
     }
   });
 
   setTimeout(() => {
     openAssistant();
-  }, 700);
+  }, 150);
 }
 
 function setTheme(theme) {
@@ -148,30 +153,6 @@ function updateScrollState() {
     if (window.scrollY >= section.offsetTop - 180) currentSection = section.id;
   });
   navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`));
-}
-
-const runSnippetButton = document.getElementById('runSnippetButton');
-const snippetOutput = document.getElementById('snippetOutput');
-const snippetOutputText = document.getElementById('snippetOutputText');
-const snippetLoader = document.getElementById('snippetLoader');
-
-if (runSnippetButton && snippetOutput && snippetOutputText && snippetLoader) {
-  const outputText = `OUTPUT\n\nName: Rahul De\nFather's Name: Goutam De\nMother's Name: Rinku De\nVillage: Ragra\nDistrict: Jhargram\nState: West Bengal`;
-
-  runSnippetButton.addEventListener('click', () => {
-    snippetOutput.classList.add('is-visible');
-    snippetLoader.style.display = 'inline-flex';
-    snippetOutputText.textContent = '';
-    runSnippetButton.disabled = true;
-    runSnippetButton.textContent = 'Running...';
-
-    setTimeout(() => {
-      snippetOutputText.textContent = outputText;
-      snippetLoader.style.display = 'none';
-      runSnippetButton.disabled = false;
-      runSnippetButton.textContent = '▶ Run Code';
-    }, 900);
-  });
 }
 
 window.addEventListener('scroll', updateScrollState, { passive: true });
