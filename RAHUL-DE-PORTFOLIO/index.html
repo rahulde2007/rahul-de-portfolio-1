@@ -118,6 +118,20 @@
 			</div>
 		</section>
 
+		<div class="about-observation reveal" aria-label="Code observation note">
+			<div class="obs-header">
+				<span class="obs-file">OBSERVATION_001.txt</span>
+			</div>
+			<pre class="obs-code" aria-label="Code observation content"><span class="code-line"><span class="line-no">01</span><span><span class="token keyword">const</span> <span class="token var">curiosity</span> = <span class="token boolean">true</span>;</span></span>
+<span class="code-line"><span class="line-no">02</span><span><span class="token keyword">let</span> <span class="token var">ideas</span> = [];</span></span>
+<span class="code-line"><span class="line-no">03</span><span></span></span>
+<span class="code-line"><span class="line-no">04</span><span><span class="token keyword">while</span> (learning) {</span></span>
+<span class="code-line"><span class="line-no">05</span><span>    <span class="token var">ideas</span>.push(<span class="token fn">tryAgain()</span>);</span></span>
+<span class="code-line"><span class="line-no">06</span><span>}</span></span>
+<span class="code-line"><span class="line-no">07</span><span></span></span>
+<span class="code-line"><span class="line-no">08</span><span><span class="token comment">// always in progress</span></span></span></pre>
+		</div>
+
 		<!-- 03. Journey Section -->
 		<section id="journey" class="section-pad journey-section">
 			<div class="section-heading reveal">
@@ -369,12 +383,29 @@
 					technology.</p>
 			</div>
 			<div class="projects-grid">
-				<article class="project-card reveal">
-					<div class="project-image studyflow-image">
-						<span>PROJECT 01</span>
-						<div class="image-placeholder">SF</div>
+				<article class="project-card reveal project-card--studyflow" data-category="full-stack">
+					<div class="project-window-header">
+						<div class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</div>
+						<div class="window-lines" aria-hidden="true">
+							<span></span><span></span><span></span>
+						</div>
 					</div>
 					<div class="project-info">
+						<div class="project-meta-row">
+							<span class="project-category">FULL STACK</span>
+							<div class="project-actions" aria-label="Project actions">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.77c-2.78.61-3.37-1.34-3.37-1.34-.46-1.15-1.12-1.46-1.12-1.46-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.9 1.55 2.37 1.1 2.95.85.09-.66.35-1.09.64-1.34-2.22-.25-4.56-1.13-4.56-5 0-1.1.39-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.04A9.31 9.31 0 0 1 12 6.84c.85 0 1.71.12 2.5.35 1.9-1.31 2.74-1.04 2.74-1.04.55 1.38.21 2.41.1 2.66.65.7 1.02 1.6 1.02 2.7 0 3.89-2.35 4.74-4.58 5 .36.31.68.93.68 1.87v2.77c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/></svg>
+								</a>
+								<a class="card-icon-button" href="./studyflow/index.html" aria-label="View live demo of StudyFlow">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+								</a>
+							</div>
+						</div>
 						<p class="mono">01 / STUDYFLOW</p>
 						<h3>STUDYFLOW<br><span>Student Productivity Dashboard</span></h3>
 						<p>A modern dashboard for organizing study tasks, focused sessions and daily progress.</p>
@@ -387,21 +418,42 @@
 							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
 						</dl>
 						<div class="project-links">
-							<a href="./studyflow/index.html" aria-label="View live demo of StudyFlow">VIEW LIVE DEMO
-								↗</a>
+							<a href="./studyflow/index.html" aria-label="View live demo of StudyFlow">VIEW LIVE DEMO ↗</a>
+						</div>
+						<div class="tech-tags" aria-label="StudyFlow technologies">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
-				<article class="project-card reveal">
-					<div class="project-image spendwise-image">
-						<span>PROJECT 02</span>
-						<div class="image-placeholder">SW</div>
+				<article class="project-card reveal project-card--spendwise" data-category="ai-ml">
+					<div class="project-window-header">
+						<div class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</div>
+						<div class="window-lines" aria-hidden="true">
+							<span></span><span></span><span></span>
+						</div>
 					</div>
 					<div class="project-info">
+						<div class="project-meta-row">
+							<span class="project-category">AI / ML</span>
+							<div class="project-actions" aria-label="Project actions">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.77c-2.78.61-3.37-1.34-3.37-1.34-.46-1.15-1.12-1.46-1.12-1.46-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.9 1.55 2.37 1.1 2.95.85.09-.66.35-1.09.64-1.34-2.22-.25-4.56-1.13-4.56-5 0-1.1.39-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.04A9.31 9.31 0 0 1 12 6.84c.85 0 1.71.12 2.5.35 1.9-1.31 2.74-1.04 2.74-1.04.55 1.38.21 2.41.1 2.66.65.7 1.02 1.6 1.02 2.7 0 3.89-2.35 4.74-4.58 5 .36.31.68.93.68 1.87v2.77c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/></svg>
+								</a>
+								<a class="card-icon-button" href="./spendwise/index.html" aria-label="View live demo of SpendWise">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+								</a>
+							</div>
+						</div>
 						<p class="mono">02 / SPENDWISE</p>
 						<h3>SPENDWISE<br><span>Student Expense Tracker</span></h3>
-						<p>A modern dashboard for recording transactions and understanding everyday spending patterns.
-						</p>
+						<p>A modern dashboard for recording transactions and understanding everyday spending patterns.</p>
 						<dl>
 							<dt>PROBLEM</dt>
 							<dd>Make spending across daily student needs easier to see and understand.</dd>
@@ -411,21 +463,42 @@
 							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
 						</dl>
 						<div class="project-links">
-							<a href="./spendwise/index.html" aria-label="View live demo of SpendWise">VIEW LIVE DEMO
-								↗</a>
+							<a href="./spendwise/index.html" aria-label="View live demo of SpendWise">VIEW LIVE DEMO ↗</a>
+						</div>
+						<div class="tech-tags" aria-label="SpendWise technologies">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
-				<article class="project-card reveal">
-					<div class="project-image army-ready-image">
-						<span>PROJECT 03</span>
-						<div class="image-placeholder">AR</div>
+				<article class="project-card reveal project-card--army" data-category="algorithm">
+					<div class="project-window-header">
+						<div class="browser-dots" aria-hidden="true">
+							<span class="dot dot-red"></span>
+							<span class="dot dot-yellow"></span>
+							<span class="dot dot-green"></span>
+						</div>
+						<div class="window-lines" aria-hidden="true">
+							<span></span><span></span><span></span>
+						</div>
 					</div>
 					<div class="project-info">
+						<div class="project-meta-row">
+							<span class="project-category">ALGORITHM</span>
+							<div class="project-actions" aria-label="Project actions">
+								<a class="card-icon-button" href="https://github.com/rahulde2007" target="_blank" rel="noopener noreferrer" aria-label="View GitHub profile">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.22c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.77c-2.78.61-3.37-1.34-3.37-1.34-.46-1.15-1.12-1.46-1.12-1.46-.92-.63.07-.62.07-.62 1.02.07 1.56 1.05 1.56 1.05.9 1.55 2.37 1.1 2.95.85.09-.66.35-1.09.64-1.34-2.22-.25-4.56-1.13-4.56-5 0-1.1.39-2 1.03-2.7-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.04A9.31 9.31 0 0 1 12 6.84c.85 0 1.71.12 2.5.35 1.9-1.31 2.74-1.04 2.74-1.04.55 1.38.21 2.41.1 2.66.65.7 1.02 1.6 1.02 2.7 0 3.89-2.35 4.74-4.58 5 .36.31.68.93.68 1.87v2.77c0 .27.18.6.69.49A10.2 10.2 0 0 0 22 12.22C22 6.58 17.52 2 12 2Z"/></svg>
+								</a>
+								<a class="card-icon-button" href="./army-ready/index.html" aria-label="View live demo of Army Ready">
+									<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7h-2V6.41l-8.29 8.3-1.42-1.42L17.59 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+								</a>
+							</div>
+						</div>
 						<p class="mono">03 / ARMY READY</p>
 						<h3>ARMY READY<br><span>Personal Discipline &amp; Goal Dashboard</span></h3>
-						<p>A personal development dashboard designed around discipline, consistency, learning and goal
-							tracking.</p>
+						<p>A personal development dashboard designed around discipline, consistency, learning and goal tracking.</p>
 						<dl>
 							<dt>PROBLEM</dt>
 							<dd>Make consistency across daily goals, habits and learning easier to maintain.</dd>
@@ -435,8 +508,13 @@
 							<dd>HTML5 · CSS3 · JavaScript · LocalStorage</dd>
 						</dl>
 						<div class="project-links">
-							<a href="./army-ready/index.html" aria-label="View live demo of Army Ready">VIEW LIVE DEMO
-								↗</a>
+							<a href="./army-ready/index.html" aria-label="View live demo of Army Ready">VIEW LIVE DEMO ↗</a>
+						</div>
+						<div class="tech-tags" aria-label="Army Ready technologies">
+							<span>HTML5</span>
+							<span>CSS3</span>
+							<span>JavaScript</span>
+							<span>LocalStorage</span>
 						</div>
 					</div>
 				</article>
