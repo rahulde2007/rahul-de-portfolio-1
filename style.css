@@ -7,20 +7,20 @@
    1. Design Tokens & CSS Custom Properties
    -------------------------------------------------------------------------- */
 :root {
-    --bg: #070b1f;
+    --bg: #050816;
     --bg-deep: #050816;
-    --bg-glow: rgba(109, 40, 217, 0.2);
-    --surface: #0b1230;
-    --surface-2: #0d1638;
-    --surface-hover: #11103a;
-    --text: #f2f1e9;
+    --bg-glow: rgba(75, 160, 255, 0.18);
+    --surface: rgba(11, 18, 34, 0.74);
+    --surface-2: rgba(13, 23, 39, 0.75);
+    --surface-hover: rgba(17, 26, 44, 0.9);
+    --text: #edf4ff;
     --text-bright: #ffffff;
-    --muted: #a5b4d4;
-    --line: #26345c;
-    --line-strong: #40558a;
-    --accent: #00d9ff;
-    --accent-dark: #3b82f6;
-    --accent-glow: rgba(0, 217, 255, 0.18);
+    --muted: #a6bfdc;
+    --line: rgba(112, 142, 196, 0.32);
+    --line-strong: rgba(127, 176, 229, 0.52);
+    --accent: #57d9ff;
+    --accent-dark: #7a6af6;
+    --accent-glow: rgba(87, 217, 255, 0.18);
     --serif: Georgia, 'Times New Roman', serif;
     --sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --mono: 'DM Mono', monospace;
@@ -34,21 +34,23 @@
 }
 
 .light-theme {
-    --bg: #eef4ff;
-    --surface: #dce8ff;
-    --surface-2: #f5f8ff;
-    --surface-hover: #d3e0ff;
-    --text: #111a38;
-    --text-bright: #080d24;
-    --muted: #53658f;
-    --line: #b8c8ed;
-    --line-strong: #8299d0;
-    --accent: #2563eb;
-    --accent-dark: #1d4ed8;
-    --accent-glow: rgba(37, 99, 235, 0.15);
-    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.12);
+    --bg: #050816;
+    --bg-deep: #050816;
+    --bg-glow: rgba(75, 160, 255, 0.18);
+    --surface: rgba(11, 18, 34, 0.74);
+    --surface-2: rgba(13, 23, 39, 0.75);
+    --surface-hover: rgba(17, 26, 44, 0.9);
+    --text: #edf4ff;
+    --text-bright: #ffffff;
+    --muted: #a6bfdc;
+    --line: rgba(112, 142, 196, 0.32);
+    --line-strong: rgba(127, 176, 229, 0.52);
+    --accent: #57d9ff;
+    --accent-dark: #7a6af6;
+    --accent-glow: rgba(87, 217, 255, 0.18);
+    --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.28);
+    --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.4);
 }
 
 /* --------------------------------------------------------------------------
@@ -67,6 +69,7 @@ html {
     max-width: 100%;
     margin: 0;
     padding: 0;
+    background: #050816;
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
     -webkit-text-size-adjust: 100%;
@@ -78,9 +81,10 @@ body {
     max-width: 100%;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-deep);
-    background-image: radial-gradient(circle at 50% 0%, var(--bg-glow) 0%, rgba(17, 16, 58, 0.18) 28%, transparent 58%);
-    background-attachment: fixed;
+    background: #050816;
+    background-color: #050816;
+    background-image: none;
+    background-attachment: scroll;
     color: var(--text);
     font-family: var(--sans);
     font-size: 16px;
@@ -92,15 +96,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background Texture Noise */
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.015;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.4'/%3E%3C/svg%3E");
-    z-index: 0;
+body::before,
+body::after {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    background: none !important;
 }
 
 .portfolio-backdrop {
@@ -109,7 +110,8 @@ body::before {
     overflow: hidden;
     pointer-events: none;
     z-index: 1;
-    background: radial-gradient(circle at 50% 0%, rgba(109, 40, 217, 0.16), transparent 42%);
+    background: transparent;
+    opacity: 0;
 }
 
 .starfield,
@@ -276,15 +278,15 @@ body::before {
     width: 260px;
     height: 260px;
     border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.22;
+    filter: blur(72px);
+    opacity: 0.25;
     animation: orb-drift 18s ease-in-out infinite alternate;
 }
 
 .glow-orb-purple {
     top: 12%;
     left: 30%;
-    background: #7c3aed;
+    background: rgba(125, 110, 247, 0.9);
 }
 
 .glow-orb-cyan {
@@ -292,7 +294,7 @@ body::before {
     top: 58%;
     width: 220px;
     height: 220px;
-    background: #06b6d4;
+    background: rgba(55, 206, 255, 0.82);
     animation-delay: -7s;
 }
 
@@ -318,6 +320,8 @@ main,
 main>section,
 .site-footer {
     background: transparent;
+    background-color: transparent;
+    background-image: none;
 }
 
 main>section:not(.achievement-section) {
@@ -344,7 +348,36 @@ main>section:not(.achievement-section) {
 }
 
 .site-footer {
-    background: rgba(10, 10, 18, 0.72);
+    background: #050816;
+    border-top: 1px solid rgba(122, 153, 214, 0.16);
+}
+
+.about-section,
+.journey-section,
+.skills-section,
+.projects-section,
+.statement-section,
+.interests-section,
+.goal-section,
+.contact-section,
+.resume-section,
+.achievement-section,
+.hero {
+    background: transparent;
+}
+
+.light-theme .about-section,
+.light-theme .journey-section,
+.light-theme .skills-section,
+.light-theme .projects-section,
+.light-theme .statement-section,
+.light-theme .interests-section,
+.light-theme .goal-section,
+.light-theme .contact-section,
+.light-theme .resume-section,
+.light-theme .achievement-section,
+.light-theme .hero {
+    background: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -942,16 +975,14 @@ h2 i {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: radial-gradient(circle at 85% 18%, rgba(37, 99, 235, 0.18) 0%, transparent 40%),
-        linear-gradient(135deg, rgba(5, 8, 22, 0.4) 20%, rgba(17, 16, 58, 0.5) 100%);
+    background: transparent;
     border-bottom: 1px solid var(--line);
     overflow: hidden;
     z-index: 2;
 }
 
 .light-theme .hero {
-    background: radial-gradient(circle at 85% 18%, rgba(219, 231, 189, 0.35) 0%, transparent 40%),
-        linear-gradient(135deg, rgba(244, 245, 235, 0.65) 20%, rgba(231, 236, 223, 0.72) 100%);
+    background: transparent;
 }
 
 .hero-grid-art {
@@ -1233,13 +1264,13 @@ h2 i {
    6. About & Education Section
    -------------------------------------------------------------------------- */
 .about-section {
-    background: rgba(11, 18, 48, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .about-section {
-    background: rgba(229, 232, 221, 0.7);
+    background: transparent;
 }
 
 .about-grid {
@@ -1345,14 +1376,14 @@ h2 i {
    7. Journey / Road Ahead Section
    -------------------------------------------------------------------------- */
 .journey-section {
-    background: rgba(13, 22, 56, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     position: relative;
 }
 
 .light-theme .journey-section {
-    background: rgba(238, 240, 230, 0.7);
+    background: transparent;
 }
 
 .journey-section .section-heading {
@@ -1420,13 +1451,13 @@ h2 i {
    8. Skills Section
    -------------------------------------------------------------------------- */
 .skills-section {
-    background: rgba(11, 18, 48, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .skills-section {
-    background: rgba(220, 232, 255, 0.7);
+    background: transparent;
 }
 
 .skills-grid {
@@ -1508,13 +1539,13 @@ h2 i {
    9. Projects Workbench Section
    -------------------------------------------------------------------------- */
 .projects-section {
-    background: rgba(13, 22, 56, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .projects-section {
-    background: rgba(238, 244, 255, 0.7);
+    background: transparent;
 }
 
 .projects-heading {
@@ -1754,13 +1785,13 @@ h2 i {
    11. Brand Statement & Pillars
    -------------------------------------------------------------------------- */
 .statement-section {
-    background: rgba(13, 22, 56, 0.55);
+    background: transparent;
     position: relative;
     overflow: hidden;
 }
 
 .light-theme .statement-section {
-    background: rgba(238, 244, 255, 0.75);
+    background: transparent;
 }
 
 .statement-mark {
@@ -1820,13 +1851,13 @@ h2 i {
    12. Interests Section
    -------------------------------------------------------------------------- */
 .interests-section {
-    background: rgba(23, 28, 24, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .interests-section {
-    background: rgba(229, 232, 221, 0.7);
+    background: transparent;
 }
 
 .interest-grid {
@@ -1924,7 +1955,7 @@ h2 i {
    -------------------------------------------------------------------------- */
 .goal-section {
     padding: 110px 8vw;
-    background: linear-gradient(120deg, #202922, #182019);
+    background: transparent;
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
     position: relative;
@@ -1932,7 +1963,7 @@ h2 i {
 }
 
 .light-theme .goal-section {
-    background: linear-gradient(120deg, #e3e8da, #d8decb);
+    background: transparent;
 }
 
 .goal-inner {
@@ -1969,13 +2000,13 @@ h2 i {
    14. Contact & Social Links Section
    -------------------------------------------------------------------------- */
 .contact-section {
-    background: rgba(11, 18, 48, 0.5);
+    background: transparent;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
 }
 
 .light-theme .contact-section {
-    background: rgba(220, 232, 255, 0.7);
+    background: transparent;
 }
 
 .contact-grid {
@@ -2233,14 +2264,14 @@ h2 i {
     justify-content: space-between;
     align-items: flex-end;
     padding: 44px 8vw;
-    background: #070b1f;
+    background: transparent;
     border-top: 1px solid var(--line);
     position: relative;
     z-index: 2;
 }
 
 .light-theme .site-footer {
-    background: #dce1d5;
+    background: transparent;
 }
 
 .site-footer .brand {
