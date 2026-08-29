@@ -380,11 +380,326 @@ main>section:not(.achievement-section) {
     background: transparent;
 }
 
+.college-id-card-section {
+    position: relative;
+    z-index: 2;
+    padding-top: 20px;
+    padding-bottom: 90px;
+    overflow: visible;
+}
+
+.college-id-card-stage {
+    width: min(100%, 740px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.college-id-card {
+    position: relative;
+    width: min(90vw, 560px);
+    max-width: calc(100vw - 24px);
+    border-radius: 26px;
+    border: 1px solid rgba(160, 179, 226, 0.22);
+    background: linear-gradient(145deg, rgba(18, 23, 38, 0.96), rgba(10, 16, 31, 0.88));
+    box-shadow: 0 22px 70px rgba(4, 9, 20, 0.56), 0 0 0 1px rgba(123, 182, 255, 0.08);
+    padding: 18px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.28s ease, border-color 0.28s ease;
+    will-change: transform;
+}
+
+.college-id-card:active {
+    cursor: grabbing;
+}
+
+.college-id-card:hover {
+    box-shadow: 0 26px 76px rgba(4, 9, 20, 0.6), 0 0 0 1px rgba(123, 182, 255, 0.1);
+    border-color: rgba(123, 182, 255, 0.25);
+}
+
+.college-id-card-inner {
+    position: relative;
+    border-radius: 18px;
+    border: 1px solid rgba(221, 230, 255, 0.14);
+    background: linear-gradient(180deg, rgba(16, 22, 32, 0.92), rgba(11, 16, 27, 0.9));
+    overflow: hidden;
+    padding: 18px 18px 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.college-id-card-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(87, 217, 255, 0.08), transparent 35%, rgba(167, 120, 255, 0.08) 100%);
+    pointer-events: none;
+}
+
+.college-id-card-header,
+.college-id-card-footer,
+.college-id-details,
+.college-id-card-main {
+    position: relative;
+    z-index: 1;
+}
+
+.college-id-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    font-family: var(--mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(231, 241, 255, 0.9);
+    font-size: 10px;
+}
+
+.college-id-brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 54px;
+    padding: 8px 10px;
+    border: 1px solid rgba(123, 182, 255, 0.5);
+    border-radius: 999px;
+    background: rgba(123, 182, 255, 0.07);
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+}
+
+.college-id-badge {
+    color: rgba(214, 223, 244, 0.78);
+    letter-spacing: 0.12em;
+}
+
+.college-id-card-main {
+    display: grid;
+    grid-template-columns: minmax(170px, 180px) 1fr;
+    gap: 18px;
+    align-items: center;
+}
+
+.college-id-photo-wrap {
+    width: 100%;
+    max-width: 180px;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(217, 226, 245, 0.2);
+    background: linear-gradient(180deg, rgba(105, 126, 169, 0.22), rgba(17, 23, 41, 0.62));
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+}
+
+.college-id-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.96) contrast(1.04);
+}
+
+.college-id-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.college-id-role {
+    margin-bottom: 8px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.college-id-meta h3 {
+    margin: 0 0 4px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+    color: #eef5ff;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.college-id-university {
+    margin-bottom: 14px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: rgba(196, 214, 244, 0.8);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.college-id-details {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: min(100%, 220px);
+}
+
+.college-id-details div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(167, 180, 224, 0.28);
+}
+
+.college-id-details span,
+.college-id-card-footer span {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(165, 182, 220, 0.8);
+}
+
+.college-id-details strong,
+.college-id-card-footer strong {
+    font-size: 0.96rem;
+    color: #edf4ff;
+    letter-spacing: 0.04em;
+    font-weight: 700;
+}
+
+.college-id-card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(167, 180, 224, 0.18);
+}
+
+.college-id-id-block,
+.college-id-valid-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.college-id-id-block strong {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+    .college-id-card-section {
+        padding-top: 10px;
+        padding-bottom: 64px;
+    }
+
+    .college-id-card {
+        width: min(88vw, 480px);
+    }
+
+    .college-id-card-main {
+        gap: 14px;
+    }
+
+    .college-id-photo-wrap {
+        max-width: 150px;
+    }
+}
+
+@media (max-width: 560px) {
+    .college-id-card {
+        width: min(92vw, 420px);
+        padding: 12px;
+        border-radius: 20px;
+    }
+
+    .college-id-card-inner {
+        padding: 14px 14px 12px;
+        border-radius: 14px;
+    }
+
+    .college-id-card-header {
+        margin-bottom: 12px;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+    }
+
+    .college-id-brand {
+        min-width: 48px;
+        padding: 7px 8px;
+    }
+
+    .college-id-card-main {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .college-id-photo-wrap {
+        max-width: 200px;
+        width: min(68vw, 260px);
+    }
+
+    .college-id-meta {
+        align-items: center;
+    }
+
+    .college-id-details {
+        width: min(100%, 220px);
+    }
+
+    .college-id-card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 360px) {
+    .college-id-card {
+        width: min(94vw, 310px);
+        padding: 10px;
+    }
+
+    .college-id-card-inner {
+        padding: 12px 12px 10px;
+    }
+
+    .college-id-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .college-id-role,
+    .college-id-university,
+    .college-id-details span,
+    .college-id-card-footer span {
+        letter-spacing: 0.08em;
+    }
+
+    .college-id-meta h3 {
+        font-size: 2.1rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
 
     .star,
     .glow-orb {
         animation: none;
+    }
+
+    .college-id-card {
+        transition: none;
     }
 }
 
@@ -3286,6 +3601,150 @@ h2 i {
     border-color: rgba(37, 99, 235, 0.28);
     color: var(--text);
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.certificates-section {
+    position: relative;
+    z-index: 2;
+    padding-top: 30px;
+    padding-bottom: 90px;
+}
+
+.certificates-heading {
+    max-width: 760px;
+    margin-bottom: 34px;
+}
+
+.certificates-heading h2 {
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.05em;
+    font-weight: 800;
+}
+
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: stretch;
+}
+
+.certificates-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 220px;
+    padding: 22px 22px 20px;
+    background: rgba(9, 16, 32, 0.72);
+    border: 1px solid rgba(126, 157, 219, 0.22);
+    border-radius: 18px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.2);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.certificates-card:hover,
+.certificates-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(87, 217, 255, 0.72);
+    box-shadow: 0 24px 54px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(87, 217, 255, 0.08);
+    background: rgba(13, 20, 36, 0.8);
+    outline: none;
+}
+
+.certificates-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.certificates-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(87, 217, 255, 0.34);
+    background: rgba(87, 217, 255, 0.08);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.certificates-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(163, 177, 217, 0.32);
+    border-radius: 50%;
+    color: var(--text);
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.certificates-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.certificates-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.certificates-card h3 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.05em;
+    color: var(--text-bright);
+    margin: 0;
+}
+
+.certificates-card p:last-child {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 0.96rem;
+}
+
+@media (max-width: 768px) {
+    .certificates-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .certificates-card {
+        min-height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .certificates-section {
+        padding-top: 10px;
+        padding-bottom: 64px;
+    }
+
+    .certificates-card {
+        padding: 18px 18px 16px;
+    }
+
+    .certificates-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .certificates-card p:last-child {
+        font-size: 0.9rem;
+    }
 }
 
 .light-theme .skill-orbit-label:hover {

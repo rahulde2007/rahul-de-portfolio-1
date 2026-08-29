@@ -84,6 +84,79 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   revealItems.forEach((item) => revealObserver.observe(item));
 }
 
+const collegeIdCard = document.querySelector('.college-id-card');
+if (collegeIdCard) {
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+  let pointerActive = false;
+  let pointerId = null;
+  let currentX = 0;
+  let currentY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  function updateCardTransform() {
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+
+    const rotateY = clamp((currentX / 18) * 7, -12, 12);
+    const rotateX = clamp((-currentY / 18) * 7, -12, 12);
+    const shadowX = currentX * 0.22;
+    const shadowY = currentY * 0.22;
+
+    collegeIdCard.style.transform = `translate3d(${currentX}px, ${currentY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    collegeIdCard.style.boxShadow = `0 22px 70px rgba(4, 9, 20, 0.56), ${shadowX}px ${shadowY}px 38px rgba(14, 57, 89, 0.2), 0 0 0 1px rgba(123, 182, 255, 0.08)`;
+    requestAnimationFrame(updateCardTransform);
+  }
+
+  function setPointerTarget(event) {
+    const rect = collegeIdCard.getBoundingClientRect();
+    const relX = (event.clientX - rect.left) / rect.width - 0.5;
+    const relY = (event.clientY - rect.top) / rect.height - 0.5;
+    targetX = clamp(relX * 100, -60, 60);
+    targetY = clamp(relY * 80, -50, 50);
+  }
+
+  collegeIdCard.addEventListener('pointerdown', (event) => {
+    pointerActive = true;
+    pointerId = event.pointerId;
+    collegeIdCard.setPointerCapture(pointerId);
+    collegeIdCard.style.transition = 'none';
+    setPointerTarget(event);
+  });
+
+  collegeIdCard.addEventListener('pointermove', (event) => {
+    if (!pointerActive) {
+      const rect = collegeIdCard.getBoundingClientRect();
+      const relX = (event.clientX - rect.left) / rect.width - 0.5;
+      const relY = (event.clientY - rect.top) / rect.height - 0.5;
+      targetX = clamp(relX * 36, -30, 30);
+      targetY = clamp(relY * 28, -22, 22);
+      return;
+    }
+
+    setPointerTarget(event);
+  });
+
+  function resetCardPosition() {
+    pointerActive = false;
+    pointerId = null;
+    targetX = 0;
+    targetY = 0;
+    collegeIdCard.style.transition = 'box-shadow 0.28s ease, border-color 0.28s ease';
+  }
+
+  collegeIdCard.addEventListener('pointerup', resetCardPosition);
+  collegeIdCard.addEventListener('pointerleave', () => {
+    if (!pointerActive) {
+      targetX = 0;
+      targetY = 0;
+    }
+  });
+  collegeIdCard.addEventListener('pointercancel', resetCardPosition);
+
+  requestAnimationFrame(updateCardTransform);
+}
+
 /* ==========================================================================
    FUTURISTIC 3D ANIMATED CANVAS BACKGROUND
    Engine: Full Desktop (1366x768, 1440x900, 1920x1080) & Mobile Compatibility
