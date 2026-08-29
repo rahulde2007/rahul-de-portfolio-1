@@ -2193,6 +2193,175 @@ h2 i {
 }
 
 /* --------------------------------------------------------------------------
+   9. Accent cards styling (all non-project cards only)
+   -------------------------------------------------------------------------- */
+.skill,
+.journey-item,
+.milestone-card,
+.interest,
+.interest-mini,
+.certificates-card,
+.contact-grid > a,
+.contact-grid > div,
+.resume-preview,
+.college-id-card,
+.about-observation {
+    --card-accent: #57d9ff;
+    --card-accent-soft: rgba(87, 217, 255, 0.12);
+    --card-accent-glow: rgba(87, 217, 255, 0.28);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill::after,
+.journey-item::after,
+.milestone-card::after,
+.interest::after,
+.interest-mini::after,
+.certificates-card::after,
+.contact-grid > a::after,
+.resume-preview::after,
+.college-id-card::after,
+.about-observation::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--card-accent), transparent 75%);
+    box-shadow: 0 0 18px var(--card-accent-glow);
+    pointer-events: none;
+}
+
+.skill:nth-child(1) { --card-accent: #ff9f6e; --card-accent-soft: rgba(255, 159, 110, 0.14); --card-accent-glow: rgba(255, 159, 110, 0.28); }
+.skill:nth-child(2) { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.14); --card-accent-glow: rgba(125, 211, 252, 0.28); }
+.skill:nth-child(3) { --card-accent: #5eead4; --card-accent-soft: rgba(94, 234, 212, 0.14); --card-accent-glow: rgba(94, 234, 212, 0.28); }
+.skill:nth-child(4) { --card-accent: #a78bfa; --card-accent-soft: rgba(167, 139, 250, 0.14); --card-accent-glow: rgba(167, 139, 250, 0.28); }
+.skill:nth-child(5) { --card-accent: #f9a8d4; --card-accent-soft: rgba(249, 168, 212, 0.14); --card-accent-glow: rgba(249, 168, 212, 0.28); }
+.skill:nth-child(6) { --card-accent: #86efac; --card-accent-soft: rgba(134, 239, 172, 0.14); --card-accent-glow: rgba(134, 239, 172, 0.28); }
+.skill:nth-child(7) { --card-accent: #fbbf24; --card-accent-soft: rgba(251, 191, 36, 0.14); --card-accent-glow: rgba(251, 191, 36, 0.28); }
+
+.journey-item:nth-child(1) { --card-accent: #ff9f6e; --card-accent-soft: rgba(255, 159, 110, 0.12); --card-accent-glow: rgba(255, 159, 110, 0.25); }
+.journey-item:nth-child(2) { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.12); --card-accent-glow: rgba(125, 211, 252, 0.25); }
+.journey-item:nth-child(3) { --card-accent: #5eead4; --card-accent-soft: rgba(94, 234, 212, 0.12); --card-accent-glow: rgba(94, 234, 212, 0.25); }
+.journey-item:nth-child(4) { --card-accent: #a78bfa; --card-accent-soft: rgba(167, 139, 250, 0.12); --card-accent-glow: rgba(167, 139, 250, 0.25); }
+.journey-item:nth-child(5) { --card-accent: #86efac; --card-accent-soft: rgba(134, 239, 172, 0.12); --card-accent-glow: rgba(134, 239, 172, 0.25); }
+
+.milestone-card:nth-child(1) { --card-accent: #ff9f6e; --card-accent-soft: rgba(255, 159, 110, 0.12); --card-accent-glow: rgba(255, 159, 110, 0.28); }
+.milestone-card:nth-child(2) { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.12); --card-accent-glow: rgba(125, 211, 252, 0.28); }
+.milestone-card:nth-child(3) { --card-accent: #5eead4; --card-accent-soft: rgba(94, 234, 212, 0.12); --card-accent-glow: rgba(94, 234, 212, 0.28); }
+
+.interest { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.12); --card-accent-glow: rgba(125, 211, 252, 0.28); }
+.interest-army { --card-accent: #86efac; --card-accent-soft: rgba(134, 239, 172, 0.12); --card-accent-glow: rgba(134, 239, 172, 0.28); }
+.interest-mini { --card-accent: #f9a8d4; --card-accent-soft: rgba(249, 168, 212, 0.12); --card-accent-glow: rgba(249, 168, 212, 0.28); }
+
+.certificates-card:nth-child(1) { --card-accent: #ff9f6e; --card-accent-soft: rgba(255, 159, 110, 0.14); --card-accent-glow: rgba(255, 159, 110, 0.3); }
+.certificates-card:nth-child(2) { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.14); --card-accent-glow: rgba(125, 211, 252, 0.3); }
+
+.contact-grid > a:nth-child(1) { --card-accent: #ff9f6e; --card-accent-soft: rgba(255, 159, 110, 0.12); --card-accent-glow: rgba(255, 159, 110, 0.28); }
+.contact-grid > a:nth-child(2) { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.12); --card-accent-glow: rgba(125, 211, 252, 0.28); }
+.contact-grid > a:nth-child(3) { --card-accent: #5eead4; --card-accent-soft: rgba(94, 234, 212, 0.12); --card-accent-glow: rgba(94, 234, 212, 0.28); }
+
+.resume-preview { --card-accent: #a78bfa; --card-accent-soft: rgba(167, 139, 250, 0.12); --card-accent-glow: rgba(167, 139, 250, 0.28); }
+.college-id-card { --card-accent: #86efac; --card-accent-soft: rgba(134, 239, 172, 0.12); --card-accent-glow: rgba(134, 239, 172, 0.28); }
+.about-observation { --card-accent: #7dd3fc; --card-accent-soft: rgba(125, 211, 252, 0.12); --card-accent-glow: rgba(125, 211, 252, 0.28); }
+
+.skill .skill-index,
+.journey-item .journey-number,
+.journey-item .journey-mark,
+.journey-item h3,
+.milestone-card .milestone-number,
+.milestone-card .mono,
+.milestone-card h3,
+.interest > span,
+.interest h3,
+.interest-mini span,
+.interest-mini strong,
+.certificates-badge,
+.certificates-label,
+.contact-grid > a span,
+.contact-grid > a strong,
+.resume-file-mark,
+.resume-status,
+.resume-label,
+.college-id-badge,
+.obs-file,
+.about-learning strong {
+    color: var(--card-accent);
+}
+
+.skill-list span,
+.certificates-badge,
+.resume-status,
+.college-id-badge,
+.obs-file,
+.contact-grid > a span {
+    background: var(--card-accent-soft);
+    border-color: color-mix(in srgb, var(--card-accent) 40%, rgba(255,255,255,0.08));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+}
+
+.skill-list span,
+.contact-grid > a span {
+    border-radius: var(--radius-sm);
+}
+
+.skill-list span {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), var(--card-accent-soft));
+}
+
+.certificates-badge,
+.resume-status,
+.college-id-badge,
+.obs-file,
+.contact-grid > a span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.resume-file-mark,
+.contact-grid > a span,
+.college-id-badge,
+.obs-file {
+    border-width: 1px;
+    border-style: solid;
+    border-color: color-mix(in srgb, var(--card-accent) 52%, transparent);
+}
+
+.resume-file-mark {
+    background: var(--card-accent-soft);
+}
+
+.contact-grid > a span {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font: 11px var(--mono);
+    padding: 0;
+}
+
+.skill h3,
+.milestone-card h3,
+.resume-preview-top h3,
+.college-id-card h3,
+.certificates-card h3 {
+    color: var(--card-accent);
+}
+
+.skill:hover,
+.milestone-card:hover,
+.interest:hover,
+.interest-mini:hover,
+.certificates-card:hover,
+.contact-grid > a:hover,
+.resume-preview:hover,
+.college-id-card:hover,
+.about-observation:hover {
+    border-color: color-mix(in srgb, var(--card-accent) 60%, var(--line));
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 12px 32px rgba(0, 0, 0, 0.18), 0 0 18px var(--card-accent-glow);
+}
+
+/* --------------------------------------------------------------------------
    9. Projects Workbench Section
    -------------------------------------------------------------------------- */
 .projects-section {
