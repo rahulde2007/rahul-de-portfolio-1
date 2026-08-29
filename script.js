@@ -7,6 +7,89 @@ const navLinks = [...document.querySelectorAll('.nav-link')];
 const progressBar = document.querySelector('.scroll-progress span');
 const sections = [...document.querySelectorAll('main section[id]')];
 
+function initWelcomeAssistant() {
+  const assistant = document.getElementById('portfolioWelcomeAssistant');
+  const bubble = document.getElementById('welcomeAssistantBubble');
+  const card = document.getElementById('welcomeAssistantCard');
+  const closeButton = document.querySelector('.welcome-assistant-close');
+  const textElement = document.querySelector('.welcome-assistant-text');
+
+  if (!assistant || !bubble || !card || !closeButton || !textElement) return;
+
+  const message = "WELCOME TO RAHUL'S PORTFOLIO";
+  let typingTimer = null;
+  let closeTimer = null;
+  let isOpen = false;
+
+  function clearTyping() {
+    if (typingTimer) {
+      clearInterval(typingTimer);
+      typingTimer = null;
+    }
+  }
+
+  function showMessage() {
+    clearTyping();
+    let index = 0;
+    textElement.textContent = '';
+    typingTimer = setInterval(() => {
+      index += 1;
+      textElement.textContent = message.slice(0, index);
+      if (index >= message.length) {
+        clearTyping();
+        closeTimer = setTimeout(() => {
+          if (isOpen) {
+            assistant.classList.remove('is-open');
+            bubble.setAttribute('aria-expanded', 'false');
+            isOpen = false;
+          }
+        }, 2400);
+      }
+    }, 70);
+  }
+
+  function openAssistant() {
+    if (isOpen) return;
+    clearTimeout(closeTimer);
+    assistant.classList.add('is-open');
+    bubble.setAttribute('aria-expanded', 'true');
+    isOpen = true;
+    showMessage();
+  }
+
+  function minimizeAssistant() {
+    clearTimeout(closeTimer);
+    assistant.classList.remove('is-open');
+    bubble.setAttribute('aria-expanded', 'false');
+    isOpen = false;
+    clearTyping();
+    textElement.textContent = '';
+  }
+
+  bubble.addEventListener('click', () => {
+    if (isOpen) {
+      minimizeAssistant();
+    } else {
+      openAssistant();
+    }
+  });
+
+  closeButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+    minimizeAssistant();
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) {
+      minimizeAssistant();
+    }
+  });
+
+  setTimeout(() => {
+    openAssistant();
+  }, 700);
+}
+
 function setTheme(theme) {
   const isLight = theme === 'light';
   body.classList.toggle('light-theme', isLight);
@@ -17,6 +100,7 @@ function setTheme(theme) {
   localStorage.setItem('rahul-theme', theme);
 }
 
+initWelcomeAssistant();
 setTheme(localStorage.getItem('rahul-theme') || 'dark');
 if (themeToggle) {
   themeToggle.addEventListener('click', () => setTheme(body.classList.contains('light-theme') ? 'dark' : 'light'));
