@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
 /* ==========================================================================
    RAHUL DE - PORTFOLIO STYLESHEET
    Clean, Responsive, Premium Dark/Light Aesthetic
@@ -18,12 +20,15 @@
     --muted: #a6bfdc;
     --line: rgba(112, 142, 196, 0.32);
     --line-strong: rgba(127, 176, 229, 0.52);
-    --accent: #57d9ff;
+    --accent: #5eead4;
+    --accent-blue: #38bdf8;
     --accent-dark: #7a6af6;
-    --accent-glow: rgba(87, 217, 255, 0.18);
-    --serif: Georgia, 'Times New Roman', serif;
+    --accent-glow: rgba(94, 234, 212, 0.18);
+    --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --serif-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --mono: 'DM Mono', monospace;
+    --mono: 'JetBrains Mono', 'DM Mono', monospace;
+    --script: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
     --header-height: 72px;
     --radius-sm: 4px;
     --radius-md: 8px;
@@ -1250,14 +1255,115 @@ p {
     margin-top: 0;
 }
 
+body {
+    font-family: var(--sans);
+    letter-spacing: 0.01em;
+}
+
+h1,
+h2,
+h3,
+h4,
+.section-heading h2,
+.milestones-heading h2,
+.statement-section blockquote,
+.goal-inner h2,
+.hero-copy h1 {
+    font-family: var(--serif-display);
+    color: #f5f5f0;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+}
+
+h1 em,
+h2 i,
+h3 i,
+.hero-copy h1 em,
+.section-heading h2 i,
+.milestones-heading h2 i,
+.statement-section blockquote i,
+.goal-inner h2 i {
+    color: var(--accent);
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-weight: 600;
+}
+
 .kicker,
 .mono,
-.eyebrow {
+.eyebrow,
+.eyebrow-dot,
+.hero-statement,
+.education-label,
+.education-main p,
+.project-meta dt,
+.project-label,
+.project-category,
+.contact-list a strong,
+.contact-list a span,
+.skill-index,
+.college-id-role,
+.college-id-details span,
+.college-id-card-footer span,
+.hero-location,
+.hero-meta small,
+.hero-scroll,
+.welcome-assistant-indicator,
+.welcome-assistant-avatar,
+.welcome-assistant-text,
+.certificates-label,
+.milestone-card .mono,
+.journey-item .mono,
+.goal-line p,
+.interest span,
+.statement-sign,
+.brand-pillars span b,
+.about-learning strong,
+.about-learning span {
     font-family: var(--mono);
-    font-size: 11px;
     letter-spacing: 0.14em;
-    color: var(--accent);
     text-transform: uppercase;
+}
+
+.kicker,
+.mono,
+.eyebrow,
+.project-label,
+.project-meta dt,
+.skill-index,
+.contact-list a strong,
+.contact-list a span,
+.hero-statement,
+.education-label,
+.certificates-label,
+.goal-line p,
+.statement-sign,
+.about-learning strong {
+    color: var(--accent);
+}
+
+.kicker,
+.eyebrow,
+.project-label,
+.certificates-label,
+.skill-index {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.hero-statement {
+    font-size: clamp(0.8rem, 1.7vw, 1.3rem);
+    line-height: 1.45;
+    letter-spacing: 0.18em;
+    color: rgba(171, 184, 201, 0.82);
+    text-transform: uppercase;
+}
+
+.hero-statement span {
+    font-family: var(--serif-display);
+    font-style: italic;
+    font-size: 1.12em;
+    letter-spacing: 0.04em;
 }
 
 .eyebrow-dot {
@@ -1269,6 +1375,75 @@ p {
     border-radius: 50%;
     box-shadow: 0 0 10px var(--accent);
     vertical-align: middle;
+}
+
+.about-lead p,
+.about-detail p,
+.journey-item p:not(.mono),
+.milestone-card p:not(.mono),
+.project-description,
+.project-subtitle,
+.interest p,
+.statement-section .brand-support,
+.statement-section blockquote,
+.goal-inner h2,
+.goal-line p,
+.contact-list em,
+.hero-copy .hero-intro,
+.education-main p:last-child,
+.education-side p,
+.education-side strong,
+.about-learning span,
+.certificates-card p,
+.certificates-card h3,
+.heading-note,
+.project-meta dd,
+.project-meta-row dd,
+.project-demo-link,
+.site-footer p,
+.site-footer a {
+    font-family: var(--sans);
+}
+
+.about-lead p,
+.about-detail p,
+.journey-item p:not(.mono),
+.milestone-card p:not(.mono),
+.project-description,
+.interest p,
+.brand-support,
+.statement-section blockquote,
+.goal-line p,
+.goal-inner h2 {
+    font-family: var(--script);
+    font-size: clamp(1.4rem, 2.1vw, 2.2rem);
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: rgba(160, 160, 160, 0.96);
+}
+
+.project-description,
+.project-subtitle,
+.certificates-card p:first-of-type,
+.heading-note,
+.goal-line p {
+    font-family: var(--sans);
+}
+
+.project-subtitle,
+.project-category,
+.project-meta dt,
+.contact-list a strong,
+.contact-list a span,
+.skill-index,
+.project-label,
+.certificates-label,
+.education-label,
+.hero-location,
+.hero-meta small,
+.hero-scroll {
+    font-size: 10px;
+    letter-spacing: 0.14em;
 }
 
 .section-pad {
@@ -1297,9 +1472,9 @@ h2 {
 .section-heading h2 i,
 h2 i {
     color: var(--accent);
-    font-family: var(--serif);
+    font-family: var(--serif-display);
     font-style: italic;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .heading-note {
@@ -1308,6 +1483,173 @@ h2 i {
     max-width: 380px;
     line-height: 1.6;
     margin-top: 14px;
+    letter-spacing: 0.04em;
+}
+
+.about-learning {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.about-learning strong,
+.about-learning span {
+    font-size: 10px;
+    line-height: 1.6;
+    letter-spacing: 0.14em;
+}
+
+.about-learning span {
+    color: rgba(233, 241, 255, 0.9);
+    font-family: var(--sans);
+    letter-spacing: 0.04em;
+    text-transform: none;
+}
+
+.project-meta {
+    display: grid;
+    gap: 12px;
+}
+
+.project-meta-row {
+    display: grid;
+    gap: 6px;
+}
+
+.project-meta-row dt,
+.project-meta-row dd {
+    margin: 0;
+}
+
+.project-meta-row dt {
+    color: rgba(171, 184, 201, 0.8);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    font-family: var(--mono);
+}
+
+.project-meta-row dd {
+    color: #f5f5f0;
+    font-family: var(--sans);
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+}
+
+.skill-list span {
+    font-family: var(--mono);
+    color: rgba(228, 233, 242, 0.96);
+    letter-spacing: 0.04em;
+    text-transform: none;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.skill-list b {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-left: 4px;
+}
+
+.contact-list a {
+    font-family: var(--sans);
+}
+
+.contact-list a em,
+.contact-list a strong,
+.contact-list a span {
+    font-family: var(--mono);
+    letter-spacing: 0.14em;
+}
+
+.contact-list a strong {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.contact-list a em {
+    color: rgba(240, 243, 248, 0.9);
+    letter-spacing: 0.04em;
+    font-style: normal;
+    font-size: 0.96rem;
+}
+
+.brand-support,
+.statement-sign,
+.goal-line p,
+.statement-section blockquote {
+    letter-spacing: 0.06em;
+}
+
+.statement-sign {
+    color: var(--accent);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.certificates-card h3,
+.project-card .project-title,
+.journey-item h3,
+.milestone-card h3,
+.interest h3,
+.education-main h3 {
+    font-family: var(--serif-display);
+    color: #f5f5f0;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+@media (max-width: 768px) {
+    .section-heading h2,
+    h2 {
+        line-height: 1.06;
+    }
+
+    .hero-statement {
+        letter-spacing: 0.12em;
+    }
+
+    .about-lead p,
+    .about-detail p,
+    .journey-item p:not(.mono),
+    .milestone-card p:not(.mono),
+    .project-description,
+    .interest p,
+    .brand-support,
+    .goal-line p,
+    .statement-section blockquote {
+        font-size: clamp(1.3rem, 5vw, 1.9rem);
+    }
+}
+
+@media (max-width: 560px) {
+    .section-heading {
+        margin-bottom: 34px;
+    }
+
+    .kicker,
+    .eyebrow,
+    .project-label,
+    .certificates-label,
+    .skill-index,
+    .hero-location,
+    .hero-meta small,
+    .hero-scroll {
+        letter-spacing: 0.1em;
+    }
+
+    .hero-copy h1 {
+        font-size: clamp(2.9rem, 16vw, 4.8rem);
+    }
+
+    .section-heading h2,
+    h2 {
+        font-size: clamp(2.3rem, 12vw, 3.5rem);
+    }
 }
 
 /* Button Component */
